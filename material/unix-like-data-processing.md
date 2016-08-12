@@ -120,9 +120,9 @@ When first logging in on a headless Linux box, you are greeted with a welcome
 message and a prompt:
 
 ~~~
-Welcome to atu15.
+Welcome to uldp16.
 Happy hacking!
-bob@atu15:~#
+bob@uldp16:~#
 ~~~
 
 In place of `bob` however, you will see the username you logged in with.
@@ -130,12 +130,12 @@ In place of `bob` however, you will see the username you logged in with.
 Try pressing enter a couple times,
 
 ~~~
-Welcome to atu15.
+Welcome to uldp16.
 Happy hacking!
-bob@atu15:~#
-bob@atu15:~#
-bob@atu15:~#
-bob@atu15:~#
+bob@uldp16:~#
+bob@uldp16:~#
+bob@uldp16:~#
+bob@uldp16:~#
 ~~~
 
 This is how you "enter" commands into your computer.
@@ -149,11 +149,11 @@ silly:
 
 
 
-bob@atu15:~# 42
+bob@uldp16:~# 42
 -bash: 42: command not found
-bob@atu15:~# hello
+bob@uldp16:~# hello
 -bash: hello: command not found
-bob@atu15:~# cowsay hello
+bob@uldp16:~# cowsay hello
  _______
 < hello >
  -------
@@ -162,7 +162,7 @@ bob@atu15:~# cowsay hello
             (__)\       )\/\
                 ||----w |
                 ||     ||
-bob@atu15:~#
+bob@uldp16:~#
 ~~~
 
 `bash` is the program that interprets your commands. `42` and `hello` are not
@@ -174,12 +174,12 @@ is a classic, silly little game we've put on our Linux box.
 The line
 
 ~~~
-bob@atu15:~#
+bob@uldp16:~#
 ~~~
 
 is called a "prompt". This prompt shows the username you logged in with (in
 this case, `bob`), the hostname of the machine you logged in on (in this case,
-`atu15`), and the working directory of your shell (in this case, `~`).
+`uldp16`), and the working directory of your shell (in this case, `~`).
 
 In the remainder of this document, we won't point out the user and hostname, as
 all our examples will use the use the same user and hostname. So our promopts
@@ -665,7 +665,7 @@ about with your files and directories. It is time to get on the Internet!
 `curl` can fetch a URL and write the fetched data to your shell.
 
 If you are reading this, you have already made your way to our server,
-http://atu15.onlineta.org.
+http://uldp16.onlineta.org.
 
 This machine runs a web server that exposes its access log to the world. Of
 course, everyone on the Internet can make all sorts of HTTP requests to this
@@ -674,7 +674,7 @@ web server.
 Let's try to fetch the access log:
 
 ~~~
-~# curl http://atu15.onlineta.org/access.log.csv.txt
+~# curl http://uldp16.onlineta.org/access.log.csv.txt
 ...
 ...GET /phpMyAdmin/scripts/setup.php HTTP/1.1"-
 ...
@@ -809,7 +809,7 @@ consists of 3 things:
 >
 >  b. The resource that was requested. This is typically the tail of the URL
 >  that the crawler used, i.e. the URL after the leading
->  `http://atu15.onlineta.org` has been cut off.
+>  `http://uldp16.onlineta.org` has been cut off.
 >
 >  c. The HTTP version used. Should be `HTTP/1.1` or `HTTP/1.0`.
 >
