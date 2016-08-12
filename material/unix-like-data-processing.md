@@ -112,7 +112,7 @@ a line where you can enter text, and "prompts" you to enter a command.
 
 You can then type away at the keyboard, and hit the Enter key to "enter" the
 command. The CLI responds by trying to understand your command, and if the
-command makes sense, it executes it. This execution may, or may not have a
+command makes sense, by executing it. This execution may, or may not have a
 directly observable effect. If the execution terminates, you will be presented
 with another prompt, prompting for the next command.
 
