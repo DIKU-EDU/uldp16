@@ -1237,7 +1237,7 @@ swap the columns that you get after `uniq -c`.
 
 (Coming in next version of the notes?)
 
-## Shell Scripts
+# Shell Scripts
 
 (Preliminary version - finished in next version of the notes?)
 
@@ -1259,7 +1259,7 @@ and it will still work.
 
 If you want to make your script feel even more like an ordinary
 program, there are two things you must do.  First, you must add a
-*she-bang* as the first line of the file:
+*shebang* as the first line of the file:
 
 ~~~
 #!/bin/sh
@@ -1295,6 +1295,165 @@ If you want to be able to run the script just by typing `myscript.sh`,
 you must its containing directory to the `$PATH` environment variable.
 This is outside the scope of this section, but you can try using a
 search engine to figure out how to do it yourself.
+
+## Basic Control Flow
+
+Copying commands into a file is a good starting point, but where shell
+scripting becomes a truly powerful tool is when begin adding *control
+flow* (conditionals and branches) to your scripts.  While much less
+powerful than a conventional programming language, shell scripting is
+a convenient way to automate workflows that involve calling many Unix
+programs.
+
+First, it is important to understand the notion of an *exit code*.
+Every program and shell command finishes by returning a number in the
+interval 0 to 255.  By default, this number is not printed, but it is
+stored in the *shell variable* `$?`.  For example, we can attempt to
+`ls` a file that does not exist:
+
+~~~
+~# ls /foo/bar
+ls: cannot access /foo/bar: No such file or directory
+~~~
+
+To print the exit code of `ls`, we echo the `$?` variable:
+
+~~~
+~# echo $?
+2
+~~~
+
+By convention, an exit code of 0 means "success", and other exit codes
+are used to indicate errors.  In this case, it seems that `ls` uses
+the exit code `2` to indicate that the specified file does not exist.
+It may use a different exit code if the file exists, but you do not
+have permission to view it.  Note what happens if we check the `$?`
+variable again:
+
+~~~
+~# echo $?
+0
+~~~
+
+The exit code is 0!  This is because the variable `$?` is overwritten
+every time we run a command.  In this case, it now contained the exit
+code of our first `echo` command.
+
+Typically we are not much concerned with the specific code being
+returned - we only care whether it is 0 (success) or anything else
+(failure).  This is also how the shells `if-then-else` construct
+operates.  For example:
+
+~~~
+~# if ls /foo/bar ; then echo 'I could ls it!'; else echo 'I could not. :-('; fi
+ls: cannot access /foo/bar: No such file or directory
+I could not. :-(
++# if ls /dev/null ; then echo 'I could ls it!'; else echo 'I could not. :-('; fi
+/dev/null
+I could ls it!
+~~~
+
+The semicolons are necessary to indicate where the arguments to `echo`
+stop.  We could also use a newline instead.
+
+### A Simple Testing Program
+
+Let us try to write a simple practical shell script.  We want to
+create a program, `utest.sh`, that is invoked as follows:
+
+~~~
+~# sh utest.sh prog input_file output_file
+~~~
+
+`utest.sh` will execute the program `prog` and feed it input from
+`input_file`.  The output from `prog` will be captured and compared to
+`output_file`, and if it differs, `utest` will complain.  Essentially,
+we are writing a small testing tool that is used to test whether some
+program, given some input, produces some specific output.  You could
+use it to create tests for the log file analysis scripts you wrote
+previously.
+
+I will go through `utest.sh` line by line.  Some new concepts will be
+introduced as necessary.
+
+~~
+#!/bin/sh
+~~
+
+First we have the shebang.  While not strictly necessary, it is good
+style.
+
+~~
+if test $# -lt 3; then
+  echo "Usage: <program> <input> <output>"
+  exit 1
+fi
+~~
+
+The *number* of arguments given to the script is stored in the
+variable `$#`.  We use the `test` program to compare whether it is
+less than (`-lt`) 3.  If so, we complain to the user and exit with a
+code indicating error.
+
+~~
+program=$1
+input=$2
+output=$3
+~~
+
+The arguments to the script are stored in variables named `$n`, where
+`n` is a number.  We create new variables with more descriptive names
+for holding the arguments.
+
+~~
+if ! ($program < $input | diff -u $output /dev/stdin); then
+    echo 'Failed; check diff.'
+fi
+~~
+
+A lot of things are happening here.  Let's take them one by one.
+
+~~
+$program < $input
+~~
+
+This runs the program stored in the variable `$program` with input
+from the file named by the variable `$input`.
+
+~~
+($program < $input | diff -u $output /dev/stdin)
+~~
+
+We pipe the output of `$program` into the `diff` program.  At its most
+basic operation, the `diff` program takes two files as arguments, and
+prints how they differ.  In this case, the first file is `$output`
+(remember, the file containing *expected* output), as well as the
+special pseudo-file `/dev/stdin`, which corresponds to the input read
+from the pipe.  We additionally use the `-u` option to `diff` to get
+slightly prettier output.
+
+~~
+if ! ($program < $input | diff -u $output /dev/stdin); then
+    echo 'Failed; check diff.'
+fi
+~~
+
+The entire pipeline is wrapped in parentheses and prefixed with `!`.
+The `!` simply inverts the exit code of a command - this is because
+`diff` returns 0 ("true") if the files are *identical*, while we want
+to enter the branch if they are *different*.
+
+### Exercises
+
+1. Turn your command lines for the previous set of exercises into shell scripts.
+
+2. Use `utest.sh` to test your shell scripts.
+
+3. Write a master test script that automatically runs `utest.sh` on
+all your scripts and their corresponding input-output files.
+
+4. Learn about shell script `for`-loops and write a version of
+`utest.sh` that can operate on any number of test sets.
 
 # Plotting
 
