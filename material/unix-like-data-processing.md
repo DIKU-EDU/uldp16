@@ -1239,7 +1239,62 @@ swap the columns that you get after `uniq -c`.
 
 ## Shell Scripts
 
-(Coming in next version of the notes?)
+(Preliminary version - finished in next version of the notes?)
+
+One useful aspect of the Unix environment is the ease of turning
+manual workflows into automatic scripts.  If you find yourself typing
+some specific sequence of commands frequently, just put them in some
+file `myscript.sh`, and run
+
+~~~
+~# sh myscript.sh
+~~~
+
+which will cause the contents of the script to be executed just as if
+you had typed it yourself.  (Actually, there are some exotic
+differences - primary among these is that using `cd` in the script
+will not have an effect once the script ends.)  The `.sh` extension is
+irrelevant to the operating system - you can call it whatever you want
+and it will still work.
+
+If you want to make your script feel even more like an ordinary
+program, there are two things you must do.  First, you must add a
+*she-bang* as the first line of the file:
+
+~~~
+#!/bin/sh
+~~~
+
+This line tells the operating system what kind of code is contained in
+the file.  In this case, we tell it to execute it using the shell
+`/bin/sh`.
+
+You must also mark the file as *executable*, or else the operating
+system will refuse to start it.  This is done with the `chmod`
+command:
+
+~~~
+~# chmod +x myscript.sh
+~~~
+
+Now we can launch the script without explicitly invoking `sh`, just by
+passing the path to the script:
+
+~~~
+~# ./myscript.sh
+~~~
+
+In this case, the path indicates the current directory, but if the
+script was somewhere else, we could run it as:
+
+~~~
+~# ~/scripts/myscript.sh
+~~~
+
+If you want to be able to run the script just by typing `myscript.sh`,
+you must its containing directory to the `$PATH` environment variable.
+This is outside the scope of this section, but you can try using a
+search engine to figure out how to do it yourself.
 
 # Plotting
 
