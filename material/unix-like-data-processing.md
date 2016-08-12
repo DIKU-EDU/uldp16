@@ -1376,53 +1376,53 @@ previously.
 I will go through `utest.sh` line by line.  Some new concepts will be
 introduced as necessary.
 
-~~
+~~~
 #!/bin/sh
-~~
+~~~
 
 First we have the shebang.  While not strictly necessary, it is good
 style.
 
-~~
+~~~
 if test $# -lt 3; then
   echo "Usage: <program> <input> <output>"
   exit 1
 fi
-~~
+~~~
 
 The *number* of arguments given to the script is stored in the
 variable `$#`.  We use the `test` program to compare whether it is
 less than (`-lt`) 3.  If so, we complain to the user and exit with a
 code indicating error.
 
-~~
+~~~
 program=$1
 input=$2
 output=$3
-~~
+~~~
 
 The arguments to the script are stored in variables named `$n`, where
 `n` is a number.  We create new variables with more descriptive names
 for holding the arguments.
 
-~~
+~~~
 if ! ($program < $input | diff -u $output /dev/stdin); then
     echo 'Failed; check diff.'
 fi
-~~
+~~~
 
 A lot of things are happening here.  Let's take them one by one.
 
-~~
+~~~
 $program < $input
-~~
+~~~
 
 This runs the program stored in the variable `$program` with input
 from the file named by the variable `$input`.
 
-~~
+~~~
 ($program < $input | diff -u $output /dev/stdin)
-~~
+~~~
 
 We pipe the output of `$program` into the `diff` program.  At its most
 basic operation, the `diff` program takes two files as arguments, and
@@ -1432,11 +1432,11 @@ special pseudo-file `/dev/stdin`, which corresponds to the input read
 from the pipe.  We additionally use the `-u` option to `diff` to get
 slightly prettier output.
 
-~~
+~~~
 if ! ($program < $input | diff -u $output /dev/stdin); then
     echo 'Failed; check diff.'
 fi
-~~
+~~~
 
 The entire pipeline is wrapped in parentheses and prefixed with `!`.
 The `!` simply inverts the exit code of a command - this is because
