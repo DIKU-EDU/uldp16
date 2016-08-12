@@ -655,6 +655,62 @@ drwxr-xr-x 10 bob bob 4.0K Sep 19 14:38 ..
 want to keep for future reference. (Don't remove `poem.txt`, we will use it
 shortly.)
 
+
+## Text-Editors
+
+Although we can read and write files using our various command-line utilities,
+in conjunction with clever shell tricks, this mode of operation can get a
+little cumbersome. Text-editors are dedicated utilities to this end.
+
+There are two classical text-editors in a Unix-like environment: `vim` and
+`emacs`. The users of one are often viciously dispassionate about the users of
+the other.  More humble users use whatever suits the task at hand. For
+instance, `vi` (a slimmer, older version of `vim`) is available on most systems
+out of the box, and so `vim` proliferates in server environments, while `emacs`
+has often been a tool you need to explcitly install, making it more suitable in
+a desktop environment.
+
+Another text editor available on many systems out of the box is `nano`. To
+avoid duels over the choice of text-editor, and still teach you a somewhat
+ubiquitous tool, we decided to focus on `nano`. To start editting our
+`poem.txt` with `nano`:
+
+~~~
+~$ nano poem.txt
+~~~
+
+`nano` uses a so-called "text-based user interface" (TUI), which is quite
+reminiscent of a graphical user interface.
+
+At the bottom of the TUI you can see a reference of the commands that you can
+enter:
+
+~~~
+  ^G Get Help      ^O Write Out     ^W Where Is     ...
+  ^X Exit          ^R Read File     ^\ Replace      ...
+~~~
+
+Here, `^` indicates the Ctrl character. For instance, type Ctrl+o to save
+(i.e., "write out") the file you are editing. `nano` will now prompt you:
+
+~~~
+  File Name to Write: poem.txt
+~~~
+
+Type Enter to confirm and overwrite `poem.txt`. To exit `nano`, type Ctrl+x.
+
+`vim` also uses a TUI by default, while `emacs` can be started in this mode
+with the command-line argument `-nw` (i.e., no window system). So `vim` and
+`emacs` can be used to similarly edit `poem.txt`, but they are far less
+friendly to beginners.
+
+A typical problem that beginning users have is how exit either `vim` or `emacs`
+once they open them. In `vim`, you can press Esc to enter a so-called "command
+mode", enter the command `:q` and press Enter. In `emacs`, you use the keyboard
+sequence Ctrl+x, Ctrl+c. Figuring out how to edit and save files in either
+`vim` or `emacs` is left as an exercise for the bored reader. Else, continue
+with `nano`.
+
 # More Data For Your Shell
 
 The world would be pretty borring if all you could do was write poems and mess
@@ -1233,11 +1289,7 @@ following format: hour (two spaces) count. So, strip the leading spaces and
 swap the columns that you get after `uniq -c`.
 
 
-## Text-Editors
-
-(Coming in next version of the notes?)
-
-# Shell Scripts
+## Shell Scripts
 
 (Preliminary version - finished in next version of the notes?)
 
