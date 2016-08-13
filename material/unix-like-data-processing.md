@@ -680,10 +680,11 @@ ubiquitous tool, we decided to focus on `nano`. To start editting our
 ~~~
 
 `nano` uses a so-called "text-based user interface" (TUI), which is quite
-reminiscent of a graphical user interface.
+reminiscent of a graphical user interface, except that a user interacts with it
+by issuing commands and/or using keyboard shortcuts instead of relying on mouse
+clicks and/or gestures. 
 
-At the bottom of the TUI you can see a reference of the commands that you can
-enter:
+At the bottom of the TUI, `nano` shows a short reference of useful shortcuts:
 
 ~~~
   ^G Get Help      ^O Write Out     ^W Where Is     ...
