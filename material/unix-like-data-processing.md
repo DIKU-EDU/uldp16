@@ -1546,7 +1546,7 @@ not logged in to the machine. One such multiplexer is `tmux`.
 a new tmux session is easy:
 
 ~~~
-~# tmux
+~$ tmux
 ~~~
 
 You will be returned to a shell prompt, but the status bar at the
@@ -1560,7 +1560,7 @@ when you entered `tmux`.  You can re-attach a detached `tmux` instance
 by typing:
 
 ~~~
-~# tmux attach
+~$ tmux attach
 ~~~
 
 If you have several detached `tmux` sessions, `tmux attach` will enter
