@@ -1441,7 +1441,7 @@ fi
 ~~~
 
 The *number* of arguments given to the script is stored in the
-variable `$#`.  We use the `test` program to compare whether it is
+variable `$#`.  We use the `test` program to check whether it is
 less than (`-lt`) 3.  If so, we complain to the user and exit with a
 code indicating error.
 
