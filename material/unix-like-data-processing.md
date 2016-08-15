@@ -144,11 +144,6 @@ The empty command is a little silly, so let's try something (slightly) less
 silly:
 
 ~~~
-
-
-
-
-
 bob@uldp16:~$ 42
 -bash: 42: command not found
 bob@uldp16:~$ hello
