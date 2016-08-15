@@ -886,7 +886,7 @@ consists of 3 things:
 result.
 
 ~~~
-~$ cat access.log | cut -d\" -f3 | sort
+~$ cat access.log | cut -d\" -f4 | sort
 ...
 curl/7.44.0
 ...
