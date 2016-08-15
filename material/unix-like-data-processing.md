@@ -723,7 +723,9 @@ use "Read File".
 ## `mv` and `&&`
 
 `mv` can be used to move/rename files. It takes at least two command-line
-arguments, the source file path and a target file path.
+arguments, the source file path and a target file path. If you supply more than
+2 arguments, all files listed before the last argument will be moved to the
+folder designated by the last argument.
 
 `&&` can be used to chain commands together such that the second is executed if
 and only if, the first one succeeds.
@@ -734,9 +736,15 @@ mv poem.txt poem.txt.long && mv poem.txt.long poem.txt
 
 ### Exercises
 
-1. Do exercises 3 and 4 above using `wc`, `cat`, `>`, `&&`, and `mv`. OBS! You
-can't read and write the same file in the same command. For task 4, you will
-need to use a temporary file.
+1. Create the directories `Andromeda`, `Corvus`, `Crux`, and `Lynx` in your
+home directory. Create a directory `Constellations` and move all the
+aforementioned directories into this one.
+
+2. Remove the folder `Constallations`.
+
+3. Do exercises 3 and 4 above (relating to `nano`) using `wc`, `cat`, `>`,
+`&&`, and `mv`. OBS! You can't read and write the same file in the same
+command. For task 4, you will need to use a temporary file.
 
 ## Shell Scripts 101
 
