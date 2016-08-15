@@ -1298,7 +1298,7 @@ following format: hour (two spaces) count. So, strip the leading spaces and
 swap the columns that you get after `uniq -c`.
 
 
-## Shell Scripts
+# Shell Scripts
 
 (Preliminary version - finished in next version of the notes?)
 
