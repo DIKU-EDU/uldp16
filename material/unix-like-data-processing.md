@@ -1502,8 +1502,9 @@ to enter the branch if they are *different*.
 3. Write a master test script that automatically runs `utest.sh` on
 all your scripts and their corresponding input-output files.
 
-4. Learn about shell script `for`-loops and write a version of
-`utest.sh` that can operate on any number of test sets.
+4. Learn about shell script `while`-loops and the `shift` command, and
+write a version of `utest.sh` that can operate on any number of test
+sets.
 
 # Plotting
 
