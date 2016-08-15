@@ -120,22 +120,22 @@ When first logging in on a headless Linux box, you are greeted with a welcome
 message and a prompt:
 
 ~~~
-Welcome to uldp16.
+Welcome to syrakuse.
 Happy hacking!
-bob@uldp16:~$
+alis@syrakuse:~$
 ~~~
 
-In place of `bob` however, you will see the username you logged in with.
+In place of `alis` however, you will see the username you logged in with.
 
 Try pressing enter a couple times,
 
 ~~~
-Welcome to uldp16.
+Welcome to syrakyse.
 Happy hacking!
-bob@uldp16:~$
-bob@uldp16:~$
-bob@uldp16:~$
-bob@uldp16:~$
+alis@syrakuse:~$
+alis@syrakuse:~$
+alis@syrakuse:~$
+alis@syrakuse:~$
 ~~~
 
 This is how you "enter" commands into your computer.
@@ -144,11 +144,11 @@ The empty command is a little silly, so let's try something (slightly) less
 silly:
 
 ~~~
-bob@uldp16:~$ 42
+alis@syrakuse:~$ 42
 -bash: 42: command not found
-bob@uldp16:~$ hello
+alis@syrakuse:~$ hello
 -bash: hello: command not found
-bob@uldp16:~$ cowsay hello
+alis@syrakuse:~$ cowsay hello
  _______
 < hello >
  -------
@@ -157,7 +157,7 @@ bob@uldp16:~$ cowsay hello
             (__)\       )\/\
                 ||----w |
                 ||     ||
-bob@uldp16:~$
+alis@syrakuse:~$
 ~~~
 
 `bash` is the program that interprets your commands. `42` and `hello` are not
@@ -169,12 +169,12 @@ is a classic, silly little game we've put on our Linux box.
 The line
 
 ~~~
-bob@uldp16:~$
+alis@syrakuse:~$
 ~~~
 
 is called a "prompt". This prompt shows the username you logged in with (in
-this case, `bob`), the hostname of the machine you logged in on (in this case,
-`uldp16`), and the working directory of your shell (in this case, `~`).
+this case, `alis`), the hostname of the machine you logged in on (in this case,
+`syrakuse`), and the working directory of your shell (in this case, `~`).
 
 In the remainder of this document, we won't point out the user and hostname, as
 all our examples will use the use the same user and hostname. So our promopts
@@ -208,7 +208,7 @@ working directory of `bash`.
 
 ~~~
 ~$ pwd
-/home/bob
+/home/alis
 ~$
 ~~~
 
@@ -218,8 +218,8 @@ in Unix-likes systems, unlike in Windows, all directories and files reside in
 one file system, starting at `/`. This is called the *root directory*.
 
 In this case, we see that the root directory has one subdirectory `home`, which
-has a sub-subdirectory `bob`. This is `bob`'s home directory. So `~` (in
-`bob`'s case) is really an alias for `/home/bob`. Let's make a mess of our home
+has a sub-subdirectory `alis`. This is `alis`'s home directory. So `~` (in
+`alis`'s case) is really an alias for `/home/alis`. Let's make a mess of our home
 directory:
 
 `mkdir` can create new directories.
@@ -244,12 +244,12 @@ for a long, and the `h` flag asks for a human-readable listing format.
 ~~~
 ~$ ls -lh
 total 24K
-drwxr-xr-x 2 bob bob 4.0K Sep 21 13:37 Andromeda
-drwxr-xr-x 2 bob bob 4.0K Sep 21 13:37 Corvus
-drwxr-xr-x 2 bob bob 4.0K Sep 21 13:37 Crux
-drwxr-xr-x 2 bob bob 4.0K Sep 21 13:37 Lynx
-drwxr-xr-x 2 bob bob 4.0K Sep 21 13:37 Ursa Major
-drwxr-xr-x 2 bob bob 4.0K Sep 21 13:37 Ursa Minor
+drwxr-xr-x 2 alis alis 4.0K Sep 21 13:37 Andromeda
+drwxr-xr-x 2 alis alis 4.0K Sep 21 13:37 Corvus
+drwxr-xr-x 2 alis alis 4.0K Sep 21 13:37 Crux
+drwxr-xr-x 2 alis alis 4.0K Sep 21 13:37 Lynx
+drwxr-xr-x 2 alis alis 4.0K Sep 21 13:37 Ursa Major
+drwxr-xr-x 2 alis alis 4.0K Sep 21 13:37 Ursa Minor
 ~~~
 
 `ls -lh` lists a whole bunch of details you probably don't even want to care
@@ -314,8 +314,8 @@ The `Andromeda` directories contains no files or directories. We can use
 ~$ mkdir Andromeda/HAT-P-6 Andromeda/WASP-1
 ~$ ls -lh Andromeda
 total 8.0K
-drwxr-xr-x 2 bob bob 4.0K Sep 21 13:37 HAT-P-6
-drwxr-xr-x 2 bob bob 4.0K Sep 21 13:37 WASP-1
+drwxr-xr-x 2 alis alis 4.0K Sep 21 13:37 HAT-P-6
+drwxr-xr-x 2 alis alis 4.0K Sep 21 13:37 WASP-1
 ~~~
 
 ### Exercises
@@ -331,7 +331,7 @@ NB! `ls -lh` should show something like this:
 ~~~
 ~$ ls -lh
 ...
-drwxr-xr-x 2 bob bob 4.0K Sep 21 13:37 "hello,\ bash"
+drwxr-xr-x 2 alis alis 4.0K Sep 21 13:37 "hello,\ bash"
 ...
 ~~~
 
@@ -343,8 +343,8 @@ drwxr-xr-x 2 bob bob 4.0K Sep 21 13:37 "hello,\ bash"
 ~$ cd Andromeda
 ~/Andromeda# ls -lh
 total 8.0K
-drwxr-xr-x 2 bob bob 4.0K Sep 21 13:37 HAT-P-6
-drwxr-xr-x 2 bob bob 4.0K Sep 21 13:37 WASP-1
+drwxr-xr-x 2 alis alis 4.0K Sep 21 13:37 HAT-P-6
+drwxr-xr-x 2 alis alis 4.0K Sep 21 13:37 WASP-1
 ~/Andromeda#
 ~~~
 
@@ -393,16 +393,16 @@ additional `a` flag:
 ~~~
 ~$ ls -lah
 total 40K
-drwxr-xr-x 10 bob bob 4.0K Sep 21 13:37 .
-drwxr-xr-x  3 bob bob 4.0K Sep 21 13:37 ..
-drwxr-xr-x  3 bob bob 4.0K Sep 21 13:37 1
-drwxr-xr-x  4 bob bob 4.0K Sep 21 13:37 Andromeda
-drwxr-xr-x  2 bob bob 4.0K Sep 21 13:37 Corvus
-drwxr-xr-x  2 bob bob 4.0K Sep 21 13:37 Crux
-drwxr-xr-x  2 bob bob 4.0K Sep 21 13:37 "hello,\ bash"
-drwxr-xr-x  2 bob bob 4.0K Sep 21 13:37 Lynx
-drwxr-xr-x  2 bob bob 4.0K Sep 21 13:37 Ursa Major
-drwxr-xr-x  2 bob bob 4.0K Sep 21 13:37 Ursa Minor
+drwxr-xr-x 10 alis alis 4.0K Sep 21 13:37 .
+drwxr-xr-x  3 alis alis 4.0K Sep 21 13:37 ..
+drwxr-xr-x  3 alis alis 4.0K Sep 21 13:37 1
+drwxr-xr-x  4 alis alis 4.0K Sep 21 13:37 Andromeda
+drwxr-xr-x  2 alis alis 4.0K Sep 21 13:37 Corvus
+drwxr-xr-x  2 alis alis 4.0K Sep 21 13:37 Crux
+drwxr-xr-x  2 alis alis 4.0K Sep 21 13:37 "hello,\ bash"
+drwxr-xr-x  2 alis alis 4.0K Sep 21 13:37 Lynx
+drwxr-xr-x  2 alis alis 4.0K Sep 21 13:37 Ursa Major
+drwxr-xr-x  2 alis alis 4.0K Sep 21 13:37 Ursa Minor
 ~$
 ~~~
 
@@ -412,7 +412,7 @@ drwxr-xr-x  2 bob bob 4.0K Sep 21 13:37 Ursa Minor
 
 1. `cd ~/../../../../../../` Where do you end up?
 2. Go back home.
-3. `cd ~/./../bob/Andromeda/./HAT-P-6/../../` Where do you end up?
+3. `cd ~/./../alis/Andromeda/./HAT-P-6/../../` Where do you end up?
 4. Create a hidden directory in your home directory.
 
 ## `echo`, `cat`, and `>`
@@ -425,7 +425,7 @@ Roses are red,
 ~$
 ~~~
 
-Note, again how arguments containing spaces are surrounded by double quotes.
+Note, again how arguments coontaining spaces are surrounded by double quotes.
 
 At first sight, this is a rather useless program. This is where the power of a
 Unix-like operating system comes into play. `bash` can *redirect* the output of
@@ -442,9 +442,9 @@ We can use `ls` to check to see what happened:
 ~~~
 ~$ ls -lah
 ...
-drwxr-xr-x  2 bob bob 4.0K Sep 21 13:37 "hello,\ bash"
--rw-r--r--  1 bob bob   15 Sep 21 13:37 roses.txt
-drwxr-xr-x  2 bob bob 4.0K Sep 21 13:37 Lynx
+drwxr-xr-x  2 alis alis 4.0K Sep 21 13:37 "hello,\ bash"
+-rw-r--r--  1 alis alis   15 Sep 21 13:37 roses.txt
+drwxr-xr-x  2 alis alis 4.0K Sep 21 13:37 Lynx
 ...
 ~$
 ~~~
@@ -466,7 +466,7 @@ bash: cd: roses.txt: Not a directory
 >
 > ~~~
 > ~$ ls -lah roses.txt
-> -rw-r--r--  1 bob bob   15 Sep 21 13:37 roses.txt
+> -rw-r--r--  1 alis alis   15 Sep 21 13:37 roses.txt
 > ~~~
 
 `cat` is a program that can print the contents of a file back to `bash`:
@@ -543,7 +543,7 @@ So our poem is 4 lines, 13 words, or 65 bytes in length.
 >
 > ~~~
 > ~$ ls -lah poem.txt
-> -rw-r--r-- 1 bob bob 65 Sep 21 13:37 poem.txt
+> -rw-r--r-- 1 alis alis 65 Sep 21 13:37 poem.txt
 > ~~~
 
 The name `wc` is easy to remember if you think that it stands for "word count",
@@ -634,8 +634,8 @@ directory itself, you can use a wildcard `*` after the directory name:
 ~$ rm -rf Andromeda/*
 ~$ ls -lah Andromeda/
 total 8.0K
-drwxr-xr-x  2 bob bob 4.0K Sep 19 14:58 .
-drwxr-xr-x 10 bob bob 4.0K Sep 19 14:38 ..
+drwxr-xr-x  2 alis alis 4.0K Sep 19 14:58 .
+drwxr-xr-x 10 alis alis 4.0K Sep 19 14:38 ..
 ~$
 ~~~
 
