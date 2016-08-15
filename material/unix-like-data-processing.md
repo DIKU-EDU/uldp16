@@ -122,7 +122,7 @@ message and a prompt:
 ~~~
 Welcome to uldp16.
 Happy hacking!
-bob@uldp16:~#
+bob@uldp16:~$
 ~~~
 
 In place of `bob` however, you will see the username you logged in with.
@@ -132,10 +132,10 @@ Try pressing enter a couple times,
 ~~~
 Welcome to uldp16.
 Happy hacking!
-bob@uldp16:~#
-bob@uldp16:~#
-bob@uldp16:~#
-bob@uldp16:~#
+bob@uldp16:~$
+bob@uldp16:~$
+bob@uldp16:~$
+bob@uldp16:~$
 ~~~
 
 This is how you "enter" commands into your computer.
@@ -149,11 +149,11 @@ silly:
 
 
 
-bob@uldp16:~# 42
+bob@uldp16:~$ 42
 -bash: 42: command not found
-bob@uldp16:~# hello
+bob@uldp16:~$ hello
 -bash: hello: command not found
-bob@uldp16:~# cowsay hello
+bob@uldp16:~$ cowsay hello
  _______
 < hello >
  -------
@@ -162,7 +162,7 @@ bob@uldp16:~# cowsay hello
             (__)\       )\/\
                 ||----w |
                 ||     ||
-bob@uldp16:~#
+bob@uldp16:~$
 ~~~
 
 `bash` is the program that interprets your commands. `42` and `hello` are not
@@ -174,7 +174,7 @@ is a classic, silly little game we've put on our Linux box.
 The line
 
 ~~~
-bob@uldp16:~#
+bob@uldp16:~$
 ~~~
 
 is called a "prompt". This prompt shows the username you logged in with (in
@@ -186,7 +186,7 @@ all our examples will use the use the same user and hostname. So our promopts
 will start out like this:
 
 ~~~
-~#
+~$
 ~~~
 
 ## Working Directory
@@ -212,9 +212,9 @@ working directory of `bash`.
 `pwd` prints the working directory:
 
 ~~~
-~# pwd
+~$ pwd
 /home/bob
-~#
+~$
 ~~~
 
 In Unix-like operating systems, file system paths are separated by `/` (forward
@@ -230,15 +230,15 @@ directory:
 `mkdir` can create new directories.
 
 ~~~
-~# mkdir Andromeda
-~# mkdir Corvus Crux Lynx
-~# mkdir "Ursa Major" "Ursa Minor"
+~$ mkdir Andromeda
+~$ mkdir Corvus Crux Lynx
+~$ mkdir "Ursa Major" "Ursa Minor"
 ~~~
 
 `ls` can list directory contents
 
 ~~~
-~# ls
+~$ ls
 Andromeda  Corvus  Crux  Lynx  Ursa Major  Ursa Minor
 ~~~
 
@@ -247,7 +247,7 @@ this, you can pass the argument `-lh` to `ls`. The `l` (small L) *flag* asks
 for a long, and the `h` flag asks for a human-readable listing format.
 
 ~~~
-~# ls -lh
+~$ ls -lh
 total 24K
 drwxr-xr-x 2 bob bob 4.0K Sep 21 13:37 Andromeda
 drwxr-xr-x 2 bob bob 4.0K Sep 21 13:37 Corvus
@@ -263,7 +263,7 @@ line.  Counting the lines, we see that the above `mkdir` commands created 6
 directories. We can now see how the `mkdir` command works with `bash`:
 
 ~~~
-~# mkdir Corvus Crux Lynx
+~$ mkdir Corvus Crux Lynx
 ~~~
 
 Created 3 directories: `Corvus`, `Crux`, and `Lynx`: `bash` splits command
@@ -274,7 +274,7 @@ spaces in its name, you must put the argument in quotes, as we did with the
 following `mkdir` command:
 
 ~~~
-~# mkdir "Ursa Major" "Ursa Minor"
+~$ mkdir "Ursa Major" "Ursa Minor"
 ~~~
 
 This created the two directories `Ursa Major` and `Ursa Minor`.
@@ -286,7 +286,7 @@ character you want "escaped". Some other characters that we often escape are
 is equivalent to the above:
 
 ~~~
-~# mkdir Ursa\ Major Ursa\ Minor
+~$ mkdir Ursa\ Major Ursa\ Minor
 ~~~
 
 By default, `ls` lists the contents of the working directory. It can also be
@@ -296,8 +296,8 @@ Try typing `ls A` and press TAB. `bash` will expand this to `ls Andromeda/`
 (the trailing `/` indicates that `Andromeda` is a directory):
 
 ~~~
-~# ls Andromeda/
-~#
+~$ ls Andromeda/
+~$
 ~~~
 
 `bash` is good friends with the working directory, and your file system in
@@ -316,8 +316,8 @@ The `Andromeda` directories contains no files or directories. We can use
 `mkdir` to create some subdirectories in `Andromeda` (remember TAB!):
 
 ~~~
-~# mkdir Andromeda/HAT-P-6 Andromeda/WASP-1
-~# ls -lh Andromeda
+~$ mkdir Andromeda/HAT-P-6 Andromeda/WASP-1
+~$ ls -lh Andromeda
 total 8.0K
 drwxr-xr-x 2 bob bob 4.0K Sep 21 13:37 HAT-P-6
 drwxr-xr-x 2 bob bob 4.0K Sep 21 13:37 WASP-1
@@ -334,7 +334,7 @@ drwxr-xr-x 2 bob bob 4.0K Sep 21 13:37 WASP-1
 NB! `ls -lh` should show something like this:
 
 ~~~
-~# ls -lh
+~$ ls -lh
 ...
 drwxr-xr-x 2 bob bob 4.0K Sep 21 13:37 "hello,\ bash"
 ...
@@ -345,7 +345,7 @@ drwxr-xr-x 2 bob bob 4.0K Sep 21 13:37 "hello,\ bash"
 `cd` changes the current working directory.
 
 ~~~
-~# cd Andromeda
+~$ cd Andromeda
 ~/Andromeda# ls -lh
 total 8.0K
 drwxr-xr-x 2 bob bob 4.0K Sep 21 13:37 HAT-P-6
@@ -360,21 +360,21 @@ long necessary, as long as you know what `~` and `/` mean.
 
 ~~~
 ~/Andromeda# cd
-~#
+~$
 ~~~
 
 Of course, you can also use the path alias `~`:
 
 ~~~
-~# cd Andromeda
+~$ cd Andromeda
 ~/Andromeda# cd ~
-~#
+~$
 ~~~
 
 Let's go deeper:
 
 ~~~
-~# cd Andromeda/HAT-P-6/
+~$ cd Andromeda/HAT-P-6/
 ~/Andromeda/HAT-P-6#
 ~~~
 
@@ -385,7 +385,7 @@ say that `..` refers to the *parent directory*. So here's the long way home:
 
 ~~~
 ~/Andromeda/HAT-P-6# cd ../../
-~#
+~$
 ~~~
 
 If every directory has a special directory `..` then how come we didn't see it
@@ -396,7 +396,7 @@ We can get `ls` to show *all* the directories in a directory using an
 additional `a` flag:
 
 ~~~
-~# ls -lah
+~$ ls -lah
 total 40K
 drwxr-xr-x 10 bob bob 4.0K Sep 21 13:37 .
 drwxr-xr-x  3 bob bob 4.0K Sep 21 13:37 ..
@@ -408,7 +408,7 @@ drwxr-xr-x  2 bob bob 4.0K Sep 21 13:37 "hello,\ bash"
 drwxr-xr-x  2 bob bob 4.0K Sep 21 13:37 Lynx
 drwxr-xr-x  2 bob bob 4.0K Sep 21 13:37 Ursa Major
 drwxr-xr-x  2 bob bob 4.0K Sep 21 13:37 Ursa Minor
-~#
+~$
 ~~~
 
 `.` is also special directory, it refers to the *current directory*.
@@ -425,9 +425,9 @@ drwxr-xr-x  2 bob bob 4.0K Sep 21 13:37 Ursa Minor
 `echo` is a program that can display a line of text. For instance:
 
 ~~~
-~# echo "Roses are red,"
+~$ echo "Roses are red,"
 Roses are red,
-~#
+~$
 ~~~
 
 Note, again how arguments containing spaces are surrounded by double quotes.
@@ -438,20 +438,20 @@ a program to a file. To do this, follow the command with the character `>`,
 followed by a path to the file where you want the output.
 
 ~~~
-~# echo "Roses are red," > roses.txt
-~#
+~$ echo "Roses are red," > roses.txt
+~$
 ~~~
 
 We can use `ls` to check to see what happened:
 
 ~~~
-~# ls -lah
+~$ ls -lah
 ...
 drwxr-xr-x  2 bob bob 4.0K Sep 21 13:37 "hello,\ bash"
 -rw-r--r--  1 bob bob   15 Sep 21 13:37 roses.txt
 drwxr-xr-x  2 bob bob 4.0K Sep 21 13:37 Lynx
 ...
-~#
+~$
 ~~~
 
 So now there is something called `roses.txt` in our home directory. Unlike the
@@ -462,7 +462,7 @@ directory.
 `cd` can help us verify this:
 
 ~~~
-~# cd roses.txt
+~$ cd roses.txt
 bash: cd: roses.txt: Not a directory
 ~~~
 
@@ -470,7 +470,7 @@ bash: cd: roses.txt: Not a directory
 > for, specify the file to `ls -lah`:
 >
 > ~~~
-> ~# ls -lah roses.txt
+> ~$ ls -lah roses.txt
 > -rw-r--r--  1 bob bob   15 Sep 21 13:37 roses.txt
 > ~~~
 
@@ -485,8 +485,8 @@ Roses are red,
 Let's create another file:
 
 ~~~
-~# echo "Violets are blue," > violets.txt
-~#
+~$ echo "Violets are blue," > violets.txt
+~$
 ~~~
 
 > **NB** `>` will overwrite the file if it already exists.
@@ -494,21 +494,21 @@ Let's create another file:
 `cat` can also *concatenate* files, and print the contents back to to `bash`:
 
 ~~~
-~# cat roses.txt violets.txt
+~$ cat roses.txt violets.txt
 Roses are red,
 Violets are blue,
-~#
+~$
 ~~~
 
 Of course, `bash` can redirect the output of any command, so we can store this,
 more complete poem in `poem.txt`.
 
 ~~~
-~# cat roses.txt violets.txt > poem.txt
-~# cat poem.txt
+~$ cat roses.txt violets.txt > poem.txt
+~$ cat poem.txt
 Roses are red,
 Violets are blue,
-~#
+~$
 ~~~
 
 ### Exercises
@@ -521,15 +521,15 @@ Violets are blue,
 It should be possible to do this in the end:
 
 ~~~
-~# cat poem.txt
+~$ cat poem.txt
 Roses are red,
 Violets are blue,
 Sugar is sweet,
 And so are you.
-~# cat violets.txt you.txt
+~$ cat violets.txt you.txt
 Violets are blue,
 And so are you.
-~#
+~$
 ~~~
 
 ## `wc` and `|`
@@ -537,9 +537,9 @@ And so are you.
 `wc` prints the line, word, and byte count of a file.
 
 ~~~
-~# wc poem.txt
+~$ wc poem.txt
  4 13 65 poem.txt
-~#
+~$
 ~~~
 
 So our poem is 4 lines, 13 words, or 65 bytes in length.
@@ -547,7 +547,7 @@ So our poem is 4 lines, 13 words, or 65 bytes in length.
 > **TIP** This explains the `65` in the output of `ls -lah` for `poem.txt`:
 >
 > ~~~
-> ~# ls -lah poem.txt
+> ~$ ls -lah poem.txt
 > -rw-r--r-- 1 bob bob 65 Sep 21 13:37 poem.txt
 > ~~~
 
@@ -560,18 +560,18 @@ high-school teacher would not be happy with such a word count.
 > **TIP** If you *just* want the line count for a file, use the `-l` option.
 >
 > ~~~
-> ~# wc -l poem.txt
+> ~$ wc -l poem.txt
 > 4 poem.txt
-> ~#
+> ~$
 > ~~~
 
 What if we wanted a word count of the silly poem we had above?
 
 ~~~
-~# cat violets.txt you.txt
+~$ cat violets.txt you.txt
 Violets are blue,
 And so are you.
-~#
+~$
 ~~~
 
 We could use `bash` redirection to put the silly poem in a silly file, pass the
@@ -582,7 +582,7 @@ this would be rather silly: Why create a file in the first place?
 type the first command, a `|` (pipe) character, then the second command:
 
 ~~~
-~# cat violets.txt you.txt | wc
+~$ cat violets.txt you.txt | wc
       2       7      34
 ~~~
 
@@ -594,7 +594,7 @@ The silly poem is just 2 lines, 7 words, or 34 bytes in length.
 Let's verify that this "pipe"-thing works by doing this with `poem.txt`:
 
 ~~~
-~# cat poem.txt | wc
+~$ cat poem.txt | wc
       4      13      65
 ~~~
 
@@ -614,14 +614,14 @@ folders.
 Use `rm` to delete files:
 
 ~~~
-~# rm poem.txt
-~#
+~$ rm poem.txt
+~$
 ~~~
 
 We can use `ls` to verify that `poem.txt` indeed is gone:
 
 ~~~
-~# ls poem.txt
+~$ ls poem.txt
 ls: cannot access poem.txt: No such file or directory
 ~~~
 
@@ -629,19 +629,19 @@ If you want to delete directories, you will need to specify the argument `-r`,
 where the `r` flag stands for "recursive".
 
 ~~~
-~# rm -r 1/
+~$ rm -r 1/
 ~~~
 
 If you want to delete all the files and directories in a directory, but the
 directory itself, you can use a wildcard `*` after the directory name:
 
 ~~~
-~# rm -rf Andromeda/*
-~# ls -lah Andromeda/
+~$ rm -rf Andromeda/*
+~$ ls -lah Andromeda/
 total 8.0K
 drwxr-xr-x  2 bob bob 4.0K Sep 19 14:58 .
 drwxr-xr-x 10 bob bob 4.0K Sep 19 14:38 ..
-~#
+~$
 ~~~
 
 > **NB** `rm` does not throw your files and directories into some
@@ -731,7 +731,7 @@ web server.
 Let's try to fetch the access log:
 
 ~~~
-~# curl http://uldp16.onlineta.org/access.log.csv.txt
+~$ curl http://uldp16.onlineta.org/access.log.csv.txt
 ...
 ...GET /phpMyAdmin/scripts/setup.php HTTP/1.1"-
 ...
@@ -741,7 +741,7 @@ Let's try to fetch the access log:
 ...
 ...GET /Ringing.at.your.dorbell!...x00_-gawa.sa.pilipinas.2015
 ...
-~#
+~$
 ~~~
 
 > **TIP** Use Shift + PgUp to scroll up, and Shift + PgDn to scroll down in
@@ -774,28 +774,28 @@ file.
 `head` can be used to output the first part of a file:
 
 ~~~
-~# head access.log
+~$ head access.log
 ... (first 10 lines of access.log)
-~#
+~$
 ~~~
 
 `tail` can be used to output the last part of a file:
 
 ~~~
-~# tail access.log
+~$ tail access.log
 ... (last 10 lines of access.log)
-~#
+~$
 ~~~
 
 For both `head` and `tail` you can specify the number of first or last lines to
 print, using the `-n` option:
 
 ~~~
-~# head -n 20 access.log
+~$ head -n 20 access.log
 ... (first 20 lines of access.log)
-~# tail -n 20 access.log
+~$ tail -n 20 access.log
 ... (last 20 lines of access.log)
-~#
+~$
 ~~~
 
 ## `cut`
@@ -826,26 +826,26 @@ To get just the IP addresses of parties that have tried to access the server,
 we can cut up each line at `"` and select the first field:
 
 ~~~
-~# cat access.log | cut -d\" -f1
+~$ cat access.log | cut -d\" -f1
 ...
 213.211.253.38
 213.211.253.38
 130.225.98.193
 ...
-~#
+~$
 ~~~
 
 You can select multiple fields, but they are always selected by `cut` in
 increasing order:
 
 ~~~
-~# cat access.log | cut -d\" -f1,3
+~$ cat access.log | cut -d\" -f1,3
 ...
 213.211.253.38"x00_-gawa.sa.pilipinas.2015
 213.211.253.38"x00_-gawa.sa.pilipinas.2015
 130.225.98.193"curl/7.44.0
 ...
-~#
+~$
 ~~~
 
 ### Exercises
@@ -878,20 +878,20 @@ consists of 3 things:
 result.
 
 ~~~
-~# cat access.log | cut -d\" -f3 | sort
+~$ cat access.log | cut -d\" -f3 | sort
 ...
 curl/7.44.0
 ...
 x00_-gawa.sa.pilipinas.2015
 x00_-gawa.sa.pilipinas.2015
 ...
-~# cat access.log | cut -d\" -f1 | sort -n
+~$ cat access.log | cut -d\" -f1 | sort -n
 ...
 130.225.98.193
 213.211.253.38
 213.211.253.38
 ...
-~#
+~$
 ~~~
 
 The `-n` option tells `sort` to sort in *alphanumeric* order rather than
@@ -907,24 +907,24 @@ have a sorted file, you can use `uniq` to output the unique lines of the
 original file.
 
 ~~~
-~# cat access.log | cut -d\" -f1 | sort -n | uniq
+~$ cat access.log | cut -d\" -f1 | sort -n | uniq
 ...
 130.225.98.193
 213.211.253.38
 ...
-~#
+~$
 ~~~
 
 `uniq` also has the rather useful option that it can count the number of
 duplicate occurrences before it deletes them:
 
 ~~~
-~# cat access.log | cut -d\" -f1 | sort -n | uniq -c
+~$ cat access.log | cut -d\" -f1 | sort -n | uniq -c
 ...
      11 130.225.98.193
       4 213.211.253.38
 ...
-~#
+~$
 ~~~
 
 ### Exercises
@@ -960,11 +960,11 @@ the Google Chrome web browser.
 > modern, *extended* variant of `grep`, be specifying the `-E` option.
 
 ~~~
-~# cat access.log | grep -E "Chrome"
+~$ cat access.log | grep -E "Chrome"
 ...
 130.225.98.193...Chrome/45.0.2454.85 Safari/537.36
 ...
-~#
+~$
 ~~~
 
 The "patterns" that you can specify to `grep` are called *[regular
@@ -979,13 +979,13 @@ those requests that were made using _either_ Google Chrome or Internet
 Explorer:
 
 ~~~
-~# cat access.log | grep -E "Chrome|Trident"
+~$ cat access.log | grep -E "Chrome|Trident"
 ...
 130.225.98.193...Chrome/45.0.2454.85 Safari/537.36
 ...
 104.148.44.191...Windows NT 6.1; Trident/5.0
 ...
-~#
+~$
 ~~~
 
 The character `|` is a regular expression *metacharacter*, and serves to say
@@ -997,7 +997,7 @@ would find all the requests made with either Google Chrome, Internet Explorer
 or Firefox.
 
 ~~~
-~# cat access.log | grep -E "Chrome|Trident|Gecko"
+~$ cat access.log | grep -E "Chrome|Trident|Gecko"
 ...
 130.225.98.193...Chrome/45.0.2454.85 Safari/537.36
 ...
@@ -1005,14 +1005,14 @@ or Firefox.
 ...
 109.200.246.88...Gecko/20100101 Firefox/9.0.1
 ...
-~#
+~$
 ~~~
 
 You can also ask `grep` for the inverse match, i.e. those lines not matching
 the given pattern using the `-v` option:
 
 ~~~
-~# cat access.log | grep -Ev "Chrome|Trident|Gecko"
+~$ cat access.log | grep -Ev "Chrome|Trident|Gecko"
 ...
 130.225.98.193...curl/7.44.0
 ...
@@ -1020,7 +1020,7 @@ the given pattern using the `-v` option:
 ...
 122.154.24.254...-
 ...
-~#
+~$
 ~~~
 
 > **TIP** To get `grep` to match in a *case-insensitive* manner. e.g. to match
@@ -1046,18 +1046,18 @@ with the metacharacter `\`. For instance, `\|`, `\^`, `\$`, and `\.`
 Consider our little poem from before:
 
 ~~~
-~# cat poem.txt
+~$ cat poem.txt
 Roses are red,
 Violets are blue,
 Sugar is sweet,
 And so are you.
-~#
+~$
 ~~~
 
 Here is how we would find all the lines ending with a `.` (dot):
 
 ~~~
-~# cat poem.txt | grep -E "\.$"
+~$ cat poem.txt | grep -E "\.$"
 And so are you.
 ~~~
 
@@ -1121,7 +1121,7 @@ Getting back to our original problem, here is how we would find all the lines
 ending with a `.` (dot) *or* a `,` (comma) in our little poem:
 
 ~~~
-~# cat poem.txt | grep -E "[\.,]$"
+~$ cat poem.txt | grep -E "[\.,]$"
 Roses are red,
 Violets are blue,
 Sugar is sweet,
@@ -1140,10 +1140,10 @@ For instance, here is how we could find all those lines that begin with a flower
 (note the use of the case-insensitive option):
 
 ~~~
-~# cat poem.txt | grep -Ei "^(roses|violets)"
+~$ cat poem.txt | grep -Ei "^(roses|violets)"
 Roses are red,
 Violets are blue,
-~#
+~$
 ~~~
 
 This leaves us with the following additional metacharacters:
@@ -1174,11 +1174,11 @@ string indicating that the requesting party is using Google Chrome on Linux, we
 could do this:
 
 ~~~
-~# cat access.log | grep -E "Linux.*Chrome"
+~$ cat access.log | grep -E "Linux.*Chrome"
 ...
 ...(X11; Linux x86_64)...Chrome/45.0.2454.85 Safari/537.36
 ...
-~#
+~$
 ~~~
 
 Here we accept any character between the *substrings* `Linux` and `Chrome`, 0
@@ -1214,16 +1214,16 @@ Tetris](https://github.com/uuner/sedtris)). We will only use sed for replacing
 the substrings of every line in a file, matching a regular expression with
 something else. The general way to call `sed` when doing this is as follows:
 
-`~# sed -E "s/` regular expression `/` replace expression `/g"`
+`~$ sed -E "s/` regular expression `/` replace expression `/g"`
 
 For instance, we can replace all occurrences of `"` in our log-file with `___`.
 
 ~~~
-~# cat access.log | sed -E "s/\"/___/g"
+~$ cat access.log | sed -E "s/\"/___/g"
 ...
 109.200.246.88___2015-09-20T18:37:08-04:00___...
 ...
-~#
+~$
 ~~~
 
 The second argument `sed` (e.g. `"s/\"/___/g"`) is a `sed`-command. We are only
@@ -1243,28 +1243,28 @@ For instance, instead of using `cut`, we could've used `sed` to cut up our
 file:
 
 ~~~
-~# cat access.log | sed -E "s/^(.*)\"(.*)\"(.*)\"(.*)$/\1/g"
+~$ cat access.log | sed -E "s/^(.*)\"(.*)\"(.*)\"(.*)$/\1/g"
 ...
 93.174.93.218
 140.117.68.161
 ...
-~# cat access.log | sed -E "s/^(.*)\"(.*)\"(.*)\"(.*)$/\2/g"
+~$ cat access.log | sed -E "s/^(.*)\"(.*)\"(.*)\"(.*)$/\2/g"
 ...
 2015-09-20T13:08:52-04:00
 2015-09-20T13:52:37-04:00
 ...
-~#
+~$
 ~~~
 
 Unlike with `cut`, with `sed` we can even reorder the fields!
 
 ~~~
-~# cat access.log | sed -E "s/^(.*)\"(.*)\"(.*)\"(.*)$/\2\"\1/g"
+~$ cat access.log | sed -E "s/^(.*)\"(.*)\"(.*)\"(.*)$/\2\"\1/g"
 ...
 2015-09-20T13:52:37-04:00"104.148.44.191
 2015-09-20T13:52:38-04:00"104.148.44.191
 ...
-~#
+~$
 ~~~
 
 ### Exercises
@@ -1300,7 +1300,7 @@ some specific sequence of commands frequently, just put them in some
 file `myscript.sh`, and run
 
 ~~~
-~# sh myscript.sh
+~$ sh myscript.sh
 ~~~
 
 which will cause the contents of the script to be executed just as if
@@ -1327,21 +1327,21 @@ system will refuse to start it.  This is done with the `chmod`
 command:
 
 ~~~
-~# chmod +x myscript.sh
+~$ chmod +x myscript.sh
 ~~~
 
 Now we can launch the script without explicitly invoking `sh`, just by
 passing the path to the script:
 
 ~~~
-~# ./myscript.sh
+~$ ./myscript.sh
 ~~~
 
 In this case, the path indicates the current directory, but if the
 script was somewhere else, we could run it as:
 
 ~~~
-~# ~/scripts/myscript.sh
+~$ ~/scripts/myscript.sh
 ~~~
 
 If you want to be able to run the script just by typing `myscript.sh`,
@@ -1365,14 +1365,14 @@ stored in the *shell variable* `$?`.  For example, we can attempt to
 `ls` a file that does not exist:
 
 ~~~
-~# ls /foo/bar
+~$ ls /foo/bar
 ls: cannot access /foo/bar: No such file or directory
 ~~~
 
 To print the exit code of `ls`, we echo the `$?` variable:
 
 ~~~
-~# echo $?
+~$ echo $?
 2
 ~~~
 
@@ -1384,7 +1384,7 @@ have permission to view it.  Note what happens if we check the `$?`
 variable again:
 
 ~~~
-~# echo $?
+~$ echo $?
 0
 ~~~
 
@@ -1398,7 +1398,7 @@ returned - we only care whether it is 0 (success) or anything else
 operates.  For example:
 
 ~~~
-~# if ls /foo/bar ; then echo 'I could ls it!'; else echo 'I could not. :-('; fi
+~$ if ls /foo/bar ; then echo 'I could ls it!'; else echo 'I could not. :-('; fi
 ls: cannot access /foo/bar: No such file or directory
 I could not. :-(
 +# if ls /dev/null ; then echo 'I could ls it!'; else echo 'I could not. :-('; fi
@@ -1415,7 +1415,7 @@ Let us try to write a simple practical shell script.  We want to
 create a program, `utest.sh`, that is invoked as follows:
 
 ~~~
-~# sh utest.sh prog input_file output_file
+~$ sh utest.sh prog input_file output_file
 ~~~
 
 `utest.sh` will execute the program `prog` and feed it input from
