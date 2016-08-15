@@ -1525,6 +1525,50 @@ sets.
 
 (Coming in next version of the notes?)
 
+# Small Tricks and Hints
+
+## Keeping your session alive
+
+When you are working remotely on a Unix system, all your processes
+will die when you log out or otherwise lose the network connection -
+for example when you move from the canteen to an auditorium, or in the
+unlikely case that Eduroam should go down.  It may also be useful to
+have a process running for a long time, for example for running
+simulations or an IRC client, even when you are not logged into the
+machine.  For these purposes, people have written *terminal
+multiplexers*.  As the name suggests, their primary purpose is to make
+one terminal act like several (roughly like tabs in a browser), but
+they are also commonly used for their ability to *detach* from a
+controlling terminal, and keep running even when their owning user is
+not logged in to the machine. One such multiplexer is `tmux`.
+
+`tmux` has many features, but we will introduce only a few.  Starting
+a new tmux session is easy:
+
+~~~
+~# tmux
+~~~
+
+You will be returned to a shell prompt, but the status bar at the
+bottom shows that you have started a *new* shell that runs inside
+`tmux`.  You can *detach* `tmux` by the keyboard shortcut `CTRL-b d`
+(that is, hold `CTRL` while clicking `b`, then release `CTRL` and `b`
+and click `d`).  All `tmux` commands use `CTRL-b` as their prefix,
+although this is configurable if you are unhappy with the default.
+After detaching `tmux`, you will be returned to the shell you were in
+when you entered `tmux`.  You can re-attach a detached `tmux` instance
+by typing:
+
+~~~
+~# tmux attach
+~~~
+
+If you have several detached `tmux` sessions, `tmux attach` will enter
+the first one.  You can use flags to specify another one, but the
+details are out of scope for this guide.  Read the documentation for
+details.  Learning just a few `tmux` features can dramatically improve
+you remote Unix experience.
+
 # Conclusion
 
 If you found Unix-like operating systems interesting, we recommend that you try
