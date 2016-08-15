@@ -1340,18 +1340,17 @@ script was somewhere else, we could run it as:
 ~~~
 
 If you want to be able to run the script just by typing `myscript.sh`,
-you must its containing directory to the `$PATH` environment variable.
-This is outside the scope of this section, but you can try using a
-search engine to figure out how to do it yourself.
+you must add its containing directory to the `$PATH` environment
+variable.  This is outside the scope of this document, but you can try
+using a search engine to figure out how to do it yourself.
 
 ## Basic Control Flow
 
-Copying commands into a file is a good starting point, but where shell
-scripting becomes a truly powerful tool is when begin adding *control
+Copying commands into a file is a good starting point, but shell
+scripting first becomes a truly powerful tool when you add *control
 flow* (conditionals and branches) to your scripts.  While much less
-powerful than a conventional programming language, shell scripting is
-a convenient way to automate workflows that involve calling many Unix
-programs.
+powerful than a conventional programming language, shell script is a
+convenient way to automate workflows that involve Unix programs.
 
 First, it is important to understand the notion of an *exit code*.
 Every program and shell command finishes by returning a number in the
@@ -1383,13 +1382,16 @@ variable again:
 0
 ~~~
 
-The exit code is 0!  This is because the variable `$?` is overwritten
-every time we run a command.  In this case, it now contained the exit
-code of our first `echo` command.
+The exit code is now 0!  This is because the variable `$?` is
+overwritten every time we run a command.  In this case, it now
+contained the exit code of our first `echo` command, which completed
+succesfully.  It is often a good idea to save away the value of `$?`
+in some other shell variable, as most commands will overwrite `$?`
+itself.
 
 Typically we are not much concerned with the specific code being
 returned - we only care whether it is 0 (success) or anything else
-(failure).  This is also how the shells `if-then-else` construct
+(failure).  This is also how the shell `if-then-else` construct
 operates.  For example:
 
 ~~~
