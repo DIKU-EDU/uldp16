@@ -707,6 +707,19 @@ sequence Ctrl+x, Ctrl+c. Figuring out how to edit and save files in either
 `vim` or `emacs` is left as an exercise for the bored reader. Else, continue
 with `nano`.
 
+### Exercises
+
+1. Open `poem.txt` in `nano`.
+
+2. Cut out the first line and paste it (uncut) at the bottom of the poem. Save
+the new file.
+
+3. Determine the number of lines and characters in the poem using `nano`. How
+many characters are there in the longest line?
+
+4. Copy the entire poem beneath itself without doing this line-by-line. Hint:
+use "Read File".
+
 # More Data For Your Shell
 
 The world would be pretty borring if all you could do was write poems and mess
