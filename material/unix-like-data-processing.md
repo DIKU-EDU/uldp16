@@ -730,7 +730,7 @@ about with your files and directories. It is time to get on the Internet!
 `curl` can fetch a URL and write the fetched data to your shell.
 
 If you are reading this, you have already made your way to our server,
-http://uldp16.onlineta.org.
+https://uldp16.onlineta.org.
 
 This machine runs a web server that exposes its access log to the world. Of
 course, everyone on the Internet can make all sorts of HTTP requests to this
@@ -739,7 +739,7 @@ web server.
 Let's try to fetch the access log:
 
 ~~~
-~$ curl http://uldp16.onlineta.org/access.log.csv.txt
+~$ curl https://uldp16.onlineta.org/access.log.csv.txt
 ...
 ...GET /phpMyAdmin/scripts/setup.php HTTP/1.1"-
 ...
@@ -874,7 +874,7 @@ consists of 3 things:
 >
 >  b. The resource that was requested. This is typically the tail of the URL
 >  that the crawler used, i.e. the URL after the leading
->  `http://uldp16.onlineta.org` has been cut off.
+>  `https://uldp16.onlineta.org` has been cut off.
 >
 >  c. The HTTP version used. Should be `HTTP/1.1` or `HTTP/1.0`.
 >
