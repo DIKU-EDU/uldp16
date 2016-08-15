@@ -720,6 +720,64 @@ many characters are there in the longest line?
 4. Copy the entire poem beneath itself without doing this line-by-line. Hint:
 use "Read File".
 
+## `mv` and `&&`
+
+`mv` can be used to move/rename files. It takes at least two command-line
+arguments, the source file path and a target file path.
+
+`&&` can be used to chain commands together such that the second is executed if
+and only if, the first one succeeds.
+
+~~~
+mv poem.txt poem.txt.long && mv poem.txt.long poem.txt
+~~~
+
+### Exercises
+
+1. Do exercises 3 and 4 above using `wc`, `cat`, `>`, `&&`, and `mv`. OBS! You
+can't read and write the same file in the same command. For task 4, you will
+need to use a temporary file.
+
+## Shell Scripts 101
+
+Composing small utilities to form complicated commands is fun, but it is also
+hard work. We can save our work by encoding a command into a so-called shell
+script — a file containing shell commands. In effect, we are creating a utility
+of our own.
+
+Let's walk through creating a shell-script for doubling the contents of a file.
+
+First, open a file `double.sh` in `nano`. The `.sh` extension follows the
+convention that shell scripts should have the filename extensions `.sh`,
+although this does not really make it a "shell script".
+
+`double.sh`, as a command-line utility, will take a command line argument
+(`$1`), regard it as a path to an existing file, `cat` this file twice into a
+temporary file (`$1.double`), and if this succeeds, move `$1.double` to `$1`,
+replacing the original file. Here, `$1` is a shell variable referring to the
+first command-line argument. If no such argument is given, `$1` is an empty
+string.
+
+Write the following to `double.sh` using `nano`:
+
+~~~
+cat $1 $1 > $1.double && mv $1.double $1
+~~~
+
+Now, to run this shell script, pass it as an argument to the program `bash`:
+
+~~~
+~$ wc -l poem.txt
+       4 poem.txt
+~$ bash double.sh poem.txt
+~$ wc -l poem.txt
+       8 poem.txt
+~~~
+
+`double.sh` is still far from a conventional command-line utility. It is a lot
+of work typing `bash double.sh` instead of just `double`. We will come back to
+how you can do this later.
+
 # More Data For Your Shell
 
 The world would be pretty borring if all you could do was write poems and mess
