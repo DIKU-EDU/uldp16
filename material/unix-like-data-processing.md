@@ -1031,7 +1031,8 @@ the Google Chrome web browser.
 `grep` is a utility that can print the lines matching a pattern.
 
 > **NOTE** `grep` is a slightly old utility, and so we will always use the more
-> modern, *extended* variant of `grep`, be specifying the `-E` option.
+> modern, *extended* variant of `grep`, be specifying the `-E` option. This is
+> equivalent to using the `egrep` utility instead.
 
 ~~~
 ~$ cat access.log | grep -E "Chrome"
