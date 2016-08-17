@@ -1063,6 +1063,9 @@ Explorer:
 ~$
 ~~~
 
+(If this doesn't work, i.e. we have no Internet Explorer users in the audience,
+try `Firefox` instead.)
+
 The character `|` is a regular expression *metacharacter*, and serves to say
 that the line should contain the string either `Chrome` _or_ `Trident`.
 
