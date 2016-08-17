@@ -1044,9 +1044,9 @@ the Google Chrome web browser.
 
 The "patterns" that you can specify to `grep` are called *[regular
 expressions](https://en.wikipedia.org/wiki/Regular_expression)*. Regular
-expressions can get quite powerful. They serve a special role in theoretical
-Computer Science. We will only take a look at some simple, practical elements
-of regular expressions.
+expressions offer a powerful syntax for matching and replacing strings. They
+deserve a special role in theoretical Computer Science. We will only take a
+look at some simple, practical elements of regular expressions.
 
 For instance, the Internet Explorer web browser is typically identified by the
 string `Trident` occurring in the browser string. Here's how you would find all
