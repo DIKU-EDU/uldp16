@@ -1117,7 +1117,7 @@ couple useful metacharacters:
 | `$` (dollar)  | End of string        |
 | `.` (dot)     | Any character        |
 
-If you actually want to match a metacharacter, you will ned to *escape* it.
+If you actually want to match a metacharacter, you will need to *escape* it.
 Similarly to strings in `bash`, this is done by prefixing the metacharacter
 with the metacharacter `\`. For instance, `\|`, `\^`, `\$`, and `\.`
 
