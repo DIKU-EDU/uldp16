@@ -1170,7 +1170,7 @@ alphabetic characters.
 alphabetic characters.
 
 5. The range `[z-a]` contains no characters because the character code for `z`
-is smaller than the character code for `a`.
+is larger than the character code for `a`.
 
 > **TIP** If you want to quickly find the character code of a particular
 > character, right-click in your Internet browser, e.g. Google Chrome, and
