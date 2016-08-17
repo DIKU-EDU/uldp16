@@ -1280,6 +1280,11 @@ or Firefox?
 browser string `-` (dash) to the log. Find the IP addresses of those visitors
 that do not supply a browser string.
 
+4. Complete the first 14 lessons on http://regexone.com/. The tool is very
+permissive, and there are multiple answers which will be deemed "correct". For
+every lesson, try to come up with as many ways as possible to get the tool mark
+your answer as "correct".
+
 ## `sed`
 
 `sed` is a tool for transforming streams of data. Transformation can take place
