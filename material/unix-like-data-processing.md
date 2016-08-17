@@ -1574,8 +1574,10 @@ to enter the branch if they are *different*.
 all your scripts and their corresponding input-output files.
 
 4. Learn about shell script `while`-loops and the `shift` command, and
-write a version of `utest.sh` that can operate on any number of test
-sets.
+write a version of `utest.sh` called `mtest.sh` that can operate on
+any number of test sets.  The script should take as argument the
+program to test, followed by input-output file pairs, e.g. `./mtest.sh
+prog in.1 out.1 in.2 out.2 ...`.
 
 # Plotting
 
