@@ -1647,6 +1647,36 @@ details are out of scope for this guide.  Read the documentation for
 details.  Learning just a few `tmux` features can dramatically improve
 you remote Unix experience.
 
+## Uploading/Downloading Your Work
+
+Similar to the `cp` command, there is an `scp` which can be used to copy files
+between machines over SSH. You can use this utility to download your work from
+a remote server, and/or upload your work to a remote server.
+
+> **OBS** The following guide is only for Linux and OS X users. Windows users
+> are referred to
+> [PSCP](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+
+To copy a file located at `<absolute-path>` on `<host>` to `<local-path>` on
+your machine, while using SSH to login as `<username>`, use the following:
+
+~~~
+$ scp <username>@<host>:<absolute-path> <local-path>
+~~~
+
+To copy a local file located at `<local-path>` to `<absolute-path>` on the
+remote `<host>` machine, while using SSH to login as `<username>`, use the
+following:
+
+~~~
+$ scp <local-path> <username>@<host>:<absolute-path>
+~~~
+
+To copy a directory, pass in the option `-r`, as with `cp`. In general, the API
+of `scp` is very similar to `cp`. For more advanced system administration
+(e.g., backup), we recommend using `rsync`. See the `man`-page for `rsync` for
+more details.
+
 # Conclusion
 
 If you found Unix-like operating systems interesting, we recommend that you try
