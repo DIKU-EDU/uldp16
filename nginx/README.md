@@ -1,13 +1,13 @@
-#+TITLE: Nginx Configurations
+# Nginx Configurations
 
 We had 2 separate droplets on Digital Ocean. One for gathering a web server log
 and host course material, and one for students to login and work on.
 
 For the web server log, we used the following log format:
 
-#+BEGIN_SRC
+~~~
 log_format csv '$remote_addr"$time_iso8601"$request"$http_user_agent';
-#+END_SRC
+~~~
 
-The use of the unconventional ="= separator is intentional, as it cannot be
+The use of the unconventional `"` separator is intentional, as it cannot be
 generated as part of either of the columns involved.
