@@ -1612,16 +1612,79 @@ right.
 
 1. Use `grep` to find all the files.
 
+2. Find all the files ending with ".
+
 # Environment Variables (e.g., `PATH`)
 
-# Plotting
+# `gnuplot`
 
-## gnuplot
+`gnuplot` is a command-line driven graphing utility. `gnuplot` is installed on
+our server, but you can also go ahead and install it locally.
+
+If you run `gnuplot` in the wild it will attempt to start up a graphical user
+interface once there is a plot to show. Since we have no graphical user
+interface when connected to our server, we want to suppress this default
+behaviour. Initial user-level settings for `gnuplot` can be specified in your
+`~/.gnuplot` file.
+
+To ask `gnuplot` to plot graphs in ASCII, add this line to your `~/.gnuplot`:
+
+~~~
+set terminal dumb
+~~~
+
+We can now try to plot something in the terminal:
+
+~~~
+$ echo "plot sin(x)" | gnuplot
+~~~
+
+or equivalently,
+
+~~~
+$ gnuplot -e "plot sin(x)"
+~~~
+
+To plot, multiple things at once, we can separate them by comma's:
+
+~~~
+$ gnuplot -e "plot sin(x), cos(x)"
+~~~
+
+To limit the x-axis range of the plot, we can specify this range after the
+`plot` command:
+
+~~~
+$ gnuplot -e "plot [-5:5] sin(x), cos(x)"
+~~~
+
+Alternatively, we can issue a command to set the x-axis range before calling
+`plot`:
+
+~~~
+$ gnuplot -e "set xrange [-5:5]; plot sin(x), cos(x)"
+~~~
+
+Similarly, we can set the y-axis range:
+
+~~~
+$ gnuplot -e "plot [-5:5] [-5:5] sin(x), cos(x)"
+~~~
+
+## `public_html`
 
 A web server has been set up on the work server, such that if you create a
 folder `public_html` in your home directory, and put something you are willing
 to share with the world in that directory, you can reach it from your browser
 via the URL `<host>/~<username>`.
+
+## Further Reading
+
+1. http://people.duke.edu/~hpgavin/gnuplot.html
+
+2. http://www.ibm.com/developerworks/aix/library/au-gnuplot/
+
+3. http://site.ebrary.com.ep.fjernadgang.kb.dk/lib/royallibrary/reader.action?docID=10537861 (via REX)
 
 # Small Tricks and Hints
 
