@@ -1597,11 +1597,31 @@ any number of test sets.  The script should take as argument the
 program to test, followed by input-output file pairs, e.g. `./mtest.sh
 prog in.1 out.1 in.2 out.2 ...`.
 
+# `diff` and `patch`
+
+`diff` and `patch` are fundamental to programming in a Unix-like environment.
+Tools like `git` build on top of `diff` and `patch` to offer a (somewhat)
+cleaner interface, but sometimes, `diff` and `patch` are useful in their own
+right.
+
+1. Create a folder `handout`. 
+
+2. Rewrite the shell scripts with diff and process substitution.
+
+# `find`
+
+1. Use `grep` to find all the files.
+
+# Environment Variables (e.g., `PATH`)
+
 # Plotting
 
 ## gnuplot
 
-(Coming in next version of the notes?)
+A web server has been set up on the work server, such that if you create a
+folder `public_html` in your home directory, and put something you are willing
+to share with the world in that directory, you can reach it from your browser
+via the URL `<host>/~<username>`.
 
 # Small Tricks and Hints
 
