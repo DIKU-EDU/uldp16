@@ -11,3 +11,14 @@ log_format csv '$remote_addr"$time_iso8601"$request"$http_user_agent';
 
 The use of the unconventional `"` separator is intentional, as it cannot be
 generated as part of either of the columns involved.
+
+For the work server, we have set up hosting of the `public_html` subdirectory
+(if any) for every user on the system. This is useful for exercises in using
+`gnuplot` to produce SVG plots. It is configured as follows:
+
+~~~
+location ~ "^/~([a-z]{3}[0-9]{3})(/.*?)?$" {
+  alias /home/$1/public_html/$2;
+  autoindex on;
+}
+~~~
