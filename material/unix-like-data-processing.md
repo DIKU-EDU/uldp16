@@ -1630,6 +1630,12 @@ prog in.1 out.1 in.2 out.2 ...`.
 
 # `diff` and `patch`
 
+`cmp` doesn't give much insight into how files differ, when they do. The more
+colloquial tool for comparing files is `diff`. The output of `diff` is
+sufficiently detailed that even if we lost one of the files, we can recover one
+from the other. This is called "patching" and can be done using the `patch`
+utility.
+
 `diff` and `patch` are fundamental to programming in a Unix-like environment.
 Tools like `git` build on top of `diff` and `patch` to offer a (somewhat)
 cleaner interface, but sometimes, `diff` and `patch` are useful in their own
