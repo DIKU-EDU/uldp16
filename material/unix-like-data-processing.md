@@ -1448,11 +1448,16 @@ using a search engine to figure out how to do this yourself.
 
 ## Basic Control Flow
 
-Copying commands into a file is a good starting point, but shell
-scripting first becomes a truly powerful tool when you add *control
-flow* (conditionals and branches) to your scripts.  While much less
-powerful than a conventional programming language, shell script is a
-convenient way to automate workflows that involve Unix programs.
+Copying commands into a file is a good starting point, but shell scripting
+first becomes a truly powerful tool when you add *control flow* (conditionals
+and branches) to your scripts.  While much less powerful than a conventional
+programming language, shell script is a convenient way to automate workflows
+that involve Unix-like programs.
+
+In fact, control flow is so esoteric in shell scripting that many users resort
+to Unix-like utilities to achieve something comparable to higher-order
+functional programming (e.g., `find` with the `-exec` argument, which we will
+cover later).
 
 First, it is important to understand the notion of an *exit code*.
 Every program and shell command finishes by returning a number in the
