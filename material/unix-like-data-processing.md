@@ -1298,9 +1298,10 @@ using regular expressions.
 > below with `perl -pe`.
 
 We can use `sed` for a lot of things (e.g., to [play
-Tetris](https://github.com/uuner/sedtris)). We will only use sed for replacing
-the substrings of every line in a file, matching a regular expression with
-something else. The general way to call `sed` when doing this is as follows:
+Tetris](https://github.com/uuner/sedtris)). We will only use `sed` for
+replacing the substrings of every line in a file, matching a regular expression
+with something else. The general way to call `sed` when doing this is as
+follows:
 
 `~$ sed -E "s/` regular expression `/` replace expression `/g"`
 
