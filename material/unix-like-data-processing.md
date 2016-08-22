@@ -1412,12 +1412,12 @@ program, there are two things you must do.  First, you must add a
 *shebang* as the first line of the file:
 
 ~~~
-#!/bin/sh
+#!/usr/bin/env sh
 ~~~
 
-This line tells the operating system what kind of code is contained in
-the file.  In this case, we tell it to execute it using the shell
-`/bin/sh`.
+This line tells the operating system what kind of code is contained in the
+file.  In this case, we tell it to execute it using whatever `sh` maps to in
+our current envirnment (equivalent to typing `sh` in the terminal).
 
 You must also mark the file as *executable*, or else the operating
 system will refuse to start it.  This is done with the `chmod`
