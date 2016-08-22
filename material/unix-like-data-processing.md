@@ -1496,7 +1496,7 @@ save away the value of `$?` in some other shell variable, as most commands will
 overwrite `$?`.
 
 Typically we are not much concerned with the specific code being
-returned - we only care whether it is 0 (success) or anything else
+returned — we only care whether it is 0 (success) or anything else
 (failure).  This is also how the shell `if-then-else` construct
 operates.  For example:
 
