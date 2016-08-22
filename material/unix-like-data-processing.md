@@ -1650,9 +1650,108 @@ right.
 
 # `find`
 
-1. Use `grep` to find all the files.
+At its basic operation, `find` is like a recursive `ls`.
 
-2. Find all the files ending with ".
+~~~
+~$ find
+.
+./poem.txt
+./utest.sh
+...
+~~~
+
+The first argument typically given to `find` is the directory to list. For
+instance, to list all the files and directories in all the home directories on
+our server:
+
+~~~
+~$ find ..
+~~~
+
+or, equivalently,
+
+~~~
+~$ find /home/
+~~~
+
+We can then filter the search results using various arguments. For instance, to
+list only directories:
+
+~~~
+~$ find .. -type d
+~~~
+
+Or, to not list directories,
+
+~~~
+~$ find .. -type f
+~~~
+
+or, equivalently,
+
+~~~
+~$ find .. ! -type d
+~~~
+
+The argument `!` negates all the filtering arguments that follow it.
+
+Note that `find` complains that it cannot access the `.ssh` directories of the
+respective users. This is due to file permissions, `.ssh` directories often
+contains sensitive data.
+
+To suppress this error, we can _prune_ those directories which we cannot read:
+
+~~~
+~$ find .. ! -perm -+r -prune
+~~~
+
+The option `+r` is related to the `+x` option we previously saw passed to
+`chmod`. `r` stands for "readable", `w` stands for "writable", and `x` stands
+for "executable".
+
+A slightly dirtier way is to redirect _standard error_ to `/dev/null`, which
+suppresses **all warnings**. This method works for all commands that respect
+the convention of writing error messages to standard error rather than standard
+out.
+
+~~~
+~$ find .. 2> /dev/null
+~~~
+
+To find all files with a given name:
+
+~~~
+~$ find .. -type f -name "utest.sh"
+~~~
+
+Use `-iname`, for a case-insensitive matching.
+
+`-name` and `-iname` accept shell-like name wildcards. For instance, to find
+all (supposed) shell scripts:
+
+~~~
+~$ find .. -type f -iname "*.sh"
+~~~
+
+If you want, you can also use regular expressions with the corresponding
+`-regex` and `-iregex` options:
+
+~~~
+~$ find .. -type f -iregex "^.*\.sh$"
+~~~
+
+You can control the depth to which `find` recurses uses the `-mindepth` and
+`-maxdepth` parameters. For instance, to find all (supposed) shell scripts in
+an immediate subdirectory of a home directory:
+
+~~~
+~$ find .. -type -f -iname "*.sh" -mindepth 2 -maxdepth 2
+~~~
+
+For other options to `find` see the `man`-page.
+
+### Exercises
+
 
 # Environment Variables (e.g., `PATH`)
 
