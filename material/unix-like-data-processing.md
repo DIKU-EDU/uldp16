@@ -1,6 +1,6 @@
 % Unix-Like Data Processing Utilities
 % Oleksandr Shturmov <oleks@oleks.info>; Morten Brøns-Pedersen <f@ntast.dk>; Troels Henriksen <athas@sigkill.dk>
-% August 18, 2016
+% August 22, 2016
 
 # Operating Systems
 
