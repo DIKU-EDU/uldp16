@@ -1548,7 +1548,7 @@ I will go through `utest.sh` line by line.  Some new concepts will be
 introduced as necessary.
 
 ~~~
-#!/bin/sh
+#!/usr/bin/env sh
 ~~~
 
 First we have the shebang.  While not strictly necessary, it is good
