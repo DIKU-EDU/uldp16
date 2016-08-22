@@ -1292,6 +1292,10 @@ using regular expressions.
 
 > **NOTE** `sed`, like `grep`, is a pretty old tool, so we will also always use
 > the more modern, *extended* variant of `sed`, by specifying the `-E` option.
+>
+> Some operating systems (most notably, OS X) do not have an extended variant
+> of `sed`. In most cases, it is safe to replace all occurrences of `sed -E`
+> below with `perl -pe`.
 
 We can use `sed` for a lot of things (e.g. to [play
 Tetris](https://github.com/uuner/sedtris)). We will only use sed for replacing
