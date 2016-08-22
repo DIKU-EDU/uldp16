@@ -1577,8 +1577,8 @@ The arguments to the script are stored in variables named `$n`, where
 for holding the arguments.
 
 ~~~
-if ! ($program < $input | diff -u $output /dev/stdin); then
-    echo 'Failed; check diff.'
+if ! ($program < $input | cmp $output /dev/stdin); then
+    echo 'Failed.'
 fi
 ~~~
 
@@ -1592,26 +1592,25 @@ This runs the program stored in the variable `$program` with input
 from the file named by the variable `$input`.
 
 ~~~
-($program < $input | diff -u $output /dev/stdin)
+($program < $input | cmp $output /dev/stdin)
 ~~~
 
-We pipe the output of `$program` into the `diff` program.  At its most
-basic operation, the `diff` program takes two files as arguments, and
-prints how they differ.  In this case, the first file is `$output`
+We pipe the output of `$program` into the `cmp` program.  At its most
+basic operation, the `cmp` program takes two files as arguments, and
+prints in-how-far they differ.  In this case, the first file is `$output`
 (remember, the file containing *expected* output), as well as the
 special pseudo-file `/dev/stdin`, which corresponds to the input read
-from the pipe.  We additionally use the `-u` option to `diff` to get
-slightly prettier output.
+from the pipe. 
 
 ~~~
-if ! ($program < $input | diff -u $output /dev/stdin); then
-    echo 'Failed; check diff.'
+if ! ($program < $input | cmp $output /dev/stdin); then
+    echo 'Failed.'
 fi
 ~~~
 
 The entire pipeline is wrapped in parentheses and prefixed with `!`.
 The `!` simply inverts the exit code of a command - this is because
-`diff` returns 0 ("true") if the files are *identical*, while we want
+`cmp` returns 0 ("true") if the files are *identical*, while we want
 to enter the branch if they are *different*.
 
 ### Exercises
