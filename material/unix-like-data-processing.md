@@ -1388,25 +1388,24 @@ of these notes). The syntax of regular expressions sometimes also varies.
 You can find a good overview of regular expressions, and what they look like in
 various languages at http://www.regular-expressions.info/.
 
-# Shell Scripts
+# Shell Scripting
 
 (Preliminary version - finished in next version of the notes?)
 
-One useful aspect of the Unix environment is the ease of turning
-manual workflows into automatic scripts.  If you find yourself typing
-some specific sequence of commands frequently, just put them in some
-file `myscript.sh`, and run
+One useful aspect of a Unix-like environment is the ease of turning manual
+workflows into automated scripts.  If you find yourself typing some specific
+sequence of commands frequently, you can put them in a file (e.g.,
+`myscript.sh`), and run it:
 
 ~~~
 ~$ sh myscript.sh
 ~~~
 
-which will cause the contents of the script to be executed just as if
-you had typed it yourself.  (Actually, there are some exotic
-differences - primary among these is that using `cd` in the script
-will not have an effect once the script ends.)  The `.sh` extension is
-irrelevant to the operating system - you can call it whatever you want
-and it will still work.
+This will cause the contents of the script to be executed just as if you had
+typed it yourself.  (Actually, there are some exotic differences — primary
+among these is that using `cd` in the script will not have an effect once the
+script ends.)  The `.sh` extension is irrelevant to the operating system — you
+can call it whatever you want and it will still work.
 
 If you want to make your script feel even more like an ordinary
 program, there are two things you must do.  First, you must add a
@@ -1445,7 +1444,7 @@ script was somewhere else, we could run it as:
 If you want to be able to run the script just by typing `myscript.sh`,
 you must add its containing directory to the `$PATH` environment
 variable.  This is outside the scope of this document, but you can try
-using a search engine to figure out how to do it yourself.
+using a search engine to figure out how to do this yourself.
 
 ## Basic Control Flow
 
