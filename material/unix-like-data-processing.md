@@ -1378,6 +1378,15 @@ as the server, so just cut out the hour of every entry in the log). Use
 following format: hour (two spaces) count. So, strip the leading spaces and
 swap the columns that you get after `uniq -c`.
 
+## Other Languages
+
+Most general-purpose programming languages come with some sort of a regular
+expression engine. Some are more advanced than others, sometimes breaking the
+otherwise elegant theory of regular languages (this theory is beyond the scope
+of these notes). The syntax of regular expressions sometimes also varies.
+
+You can find a good overview of regular expressions, and what they look like in
+various languages at http://www.regular-expressions.info/.
 
 # Shell Scripts
 
