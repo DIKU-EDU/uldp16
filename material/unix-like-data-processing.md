@@ -1624,13 +1624,14 @@ right.
 # `gnuplot`
 
 `gnuplot` is a command-line driven graphing utility. `gnuplot` is installed on
-our server, but you can also go ahead and install it locally.
+our server, but you can also go ahead and install it locally. Some (Linux)
+platforms have multiple versions of `gnuplot` based on different graphical user
+interface (GUI) frameworks. The choice, for our purposes, does not matter.
 
-If you run `gnuplot` in the wild it will attempt to start up a graphical user
-interface once there is a plot to show. Since we have no graphical user
-interface when connected to our server, we want to suppress this default
-behaviour. Initial user-level settings for `gnuplot` can be specified in your
-`~/.gnuplot` file.
+If you run `gnuplot` in the wild it will attempt to start up a GUI once there
+is a plot to show. Since we have no GUI capabilities when connected to our
+server, we want to suppress this default behaviour. Initial user-level settings
+for `gnuplot` can be specified in your `~/.gnuplot` file.
 
 To ask `gnuplot` to plot graphs in ASCII, add this line to your `~/.gnuplot`:
 
