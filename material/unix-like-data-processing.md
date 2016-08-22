@@ -1446,6 +1446,21 @@ you must add its containing directory to the `$PATH` environment
 variable.  This is outside the scope of this document, but you can try
 using a search engine to figure out how to do this yourself.
 
+### Exercises
+
+Write a shell script for each of the following. Latter scripts can (and
+probably should) refer to earlier scripts.
+
+1. List the IP addresses that accessed the server.
+
+2. Count how many times each unique IP address occured.
+
+3. Get the requests made (supposedly) from Firefox.
+
+4. Get the IP addresses of Firefox all (supposed) users.
+
+5. Replace the ISO 8601 dates as we did above.
+
 ## Basic Control Flow
 
 Copying commands into a file is a good starting point, but shell scripting
