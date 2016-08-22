@@ -1501,12 +1501,12 @@ returned — we only care whether it is 0 (success) or anything else
 operates.  For example:
 
 ~~~
-~$ if ls /foo/bar ; then echo 'I could ls it!'; else echo 'I could not. :-('; fi
+~$ if ls /foo/bar ; then echo ':-)'; else echo ':-('; fi
 ls: cannot access /foo/bar: No such file or directory
-I could not. :-(
-+# if ls /dev/null ; then echo 'I could ls it!'; else echo 'I could not. :-('; fi
+:-(
+~$ if ls /dev/null ; then echo ':-)'; else echo ':-('; fi
 /dev/null
-I could ls it!
+:-)
 ~~~
 
 The semicolons are necessary to indicate where the arguments to `echo`
