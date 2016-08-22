@@ -1291,7 +1291,7 @@ your answer as "correct".
 using regular expressions.
 
 > **NOTE** `sed`, like `grep`, is a pretty old tool, so we will also always use
-> the more modern, *extended* variant of `sed`, by specifying the `-E` option.
+> the more modern, *extended* variant of `sed`, using `sed -E`.
 >
 > Some operating systems (most notably, OS X) do not have an extended variant
 > of `sed`. In most cases, it is safe to replace all occurrences of `sed -E`
