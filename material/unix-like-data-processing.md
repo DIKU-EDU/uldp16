@@ -1489,12 +1489,11 @@ variable again:
 0
 ~~~
 
-The exit code is now 0!  This is because the variable `$?` is
-overwritten every time we run a command.  In this case, it now
-contained the exit code of our first `echo` command, which completed
-succesfully.  It is often a good idea to save away the value of `$?`
-in some other shell variable, as most commands will overwrite `$?`
-itself.
+The exit code is now 0!  This is because the variable `$?` is overwritten every
+time we run a command.  In this case, it now contained the exit code of our
+first `echo` command, which completed succesfully.  It is often a good idea to
+save away the value of `$?` in some other shell variable, as most commands will
+overwrite `$?`.
 
 Typically we are not much concerned with the specific code being
 returned - we only care whether it is 0 (success) or anything else
