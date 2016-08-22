@@ -1510,7 +1510,7 @@ ls: cannot access /foo/bar: No such file or directory
 ~~~
 
 The semicolons are necessary to indicate where the arguments to `echo`
-stop.  We could also use a newline instead.
+stop.  We could also use a line break instead.
 
 ### A Simple Testing Program
 
