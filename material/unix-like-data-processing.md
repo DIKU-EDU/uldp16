@@ -647,8 +647,8 @@ drwxr-xr-x 10 alis alis 4.0K Sep 19 14:38 ..
 ### Exercises
 
 1. Remove all the files and directories in your home directory which you don't
-want to keep for future reference. (Don't remove `poem.txt`, we will use it
-shortly.)
+want to keep for future reference. (Don't remove `poem.txt`, or the `1`
+directory, we will use them shortly.)
 
 
 ## Text-Editors
@@ -785,6 +785,63 @@ Now, to run this shell script, pass it as an argument to the program `bash`:
 `double.sh` is still far from a conventional command-line utility. It is a lot
 of work typing `bash double.sh` instead of just `double`. We will come back to
 how you can do this later.
+
+## `file` and `which`
+
+In a Unix-like operating system, everything is a file. Furthermore, it is the
+contents, or the metadata of a file (not e.g., a filename extension), that
+determines the _type_ of a file.
+
+The `file` utility exists to help users "guess" the type of a file. Its usage
+is simple:
+
+~~~
+~$ file poem.txt
+poem.txt: ASCII text
+~$ file double.sh
+double.sh: ASCII text
+~$ file 1/
+1/: directory
+~$ file .
+.: directory
+~~~
+
+When you type a program name in your shell, this program must exist as an
+executable somewhere on your filesystem. You can use `which` to figure out what
+a given program name resolves to.
+
+In Unix-like operating systems it is conventional to have short names (aliases)
+for more concrete programs. One such popular program is Python. Our server has
+Python version 2.7 installed, but it suffices to type `python` to start it up.
+The following sequence of `which` and `file` commands shows how we can figure
+out the concrete executable behind "`python`":
+
+~~~
+$ which python
+/usr/local/bin/python
+~$ file /usr/local/bin/python
+/usr/local/bin/python: symbolic link to python2
+~$ which python2
+/usr/local/bin/python2
+~$ file /usr/local/bin/python2
+/usr/local/bin/python2: symbolic link to python2.7
+~$ which python2.7
+/usr/local/bin/python2.7
+~$ file /usr/local/bin/python2
+/usr/local/bin/python2: symbolic link to python2.7
+~$ file /usr/local/bin/python2.7
+/usr/local/bin/python2.7: ELF 64-bit LSB executable ...
+~~~
+
+The last line indicates that we've reached the actual executable that gets
+loaded into memory when we type `python` in our shell. Until then, we merely
+follow so-called "symbolic links".
+
+### Exercises
+
+1. Which concrete executable does `bash` resolve to?
+
+2. Which concrete executable does `which` resolve to?
 
 # More Data For Your Shell
 
