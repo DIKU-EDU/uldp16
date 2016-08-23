@@ -1799,8 +1799,6 @@ their shell scripts.
 5. Find all the `*.sh` files that begin with a shebang. What different shebangs
 are there in use?
 
-# Environment Variables (e.g., `PATH`)
-
 # `gnuplot`
 
 `gnuplot` is a command-line driven graphing utility. `gnuplot` is installed on
