@@ -1855,14 +1855,28 @@ Similarly, we can set the y-axis range:
 $ gnuplot -e "plot [-5:5] [-5:5] sin(x), cos(x)"
 ~~~
 
+`plot` is typically the last command you want to issue to `gnuplot`, preceding
+this with a number of plot configurations. It can get a little long-winded to
+type those in as part of a shell command, so `gnuplot` commands are typically
+stored in separate files.
+
+~~~
+$ gnuplot -e "set xlabel plot [-5:5] [-5:5] sin(x), cos(x)"
+~~~
+
 ## `public_html`
 
-A web server has been set up on the work server, such that if you create a
-folder `public_html` in your home directory, and put something you are willing
-to share with the world in that directory, you can reach it from your browser
-via the URL `<host>/~<username>`.
+A web server has been set up on our server, such that if you create a folder
+`public_html` in your home directory, and put something you are willing to
+share with the world in that directory, you can reach it from your browser via
+the URL `http://<hostname>/~<username>`. Where you would otherwise login via
+SSH using `<username>@<hostname>`.
+
+(More coming soon.)
 
 ## Further Reading
+
+For more on the different settings:
 
 1. http://people.duke.edu/~hpgavin/gnuplot.html
 
