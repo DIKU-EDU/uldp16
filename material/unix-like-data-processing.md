@@ -839,9 +839,11 @@ follow so-called "symbolic links".
 
 ### Exercises
 
-1. Which concrete executable does `bash` resolve to?
+1. Which concrete executable does `sh` resolve to?
 
-2. Which concrete executable does `which` resolve to?
+2. Which concrete executable does `bash` resolve to?
+
+3. Which concrete executable does `which` resolve to?
 
 # More Data For Your Shell
 
