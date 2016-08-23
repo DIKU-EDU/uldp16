@@ -1787,6 +1787,10 @@ files. Suppress this error output in the terminal.
 2. The example use of the `-exec` option similarly complains about inaccessible
 files. Suppress this error output in the terminal.
 
+3. Execute `grep` to find all the lines of all `*.sh` files that contain the
+word `cmp`. (_Hint:_ If you want to print the filenames, and not just the
+matching lines, path the option `--with-filename` to `grep`.)
+
 # Environment Variables (e.g., `PATH`)
 
 # `gnuplot`
