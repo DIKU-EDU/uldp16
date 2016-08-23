@@ -1631,6 +1631,10 @@ program to test, followed by input-output file pairs. For instance,
     ~$ ./mtest.sh prog in.1 out.1 in.2 out.2
     ~~~
 
+# Exercise Series: `tmpdir`
+
+(Coming soon.)
+
 # `diff` and `patch`
 
 `cmp` doesn't give much insight into how files differ, when they do. The more
@@ -1644,9 +1648,7 @@ Tools like `git` build on top of `diff` and `patch` to offer a (somewhat)
 cleaner interface, but sometimes, `diff` and `patch` are useful in their own
 right.
 
-1. Create a folder `handout`. 
-
-2. Rewrite the shell scripts with diff and process substitution.
+(More coming soon.)
 
 # `find` (and a little more `grep`)
 
