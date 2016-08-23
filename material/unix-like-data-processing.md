@@ -1648,7 +1648,7 @@ right.
 
 2. Rewrite the shell scripts with diff and process substitution.
 
-# `find`
+# `find` (and a little more `grep`)
 
 At its basic operation, `find` is like a recursive `ls`.
 
@@ -1748,10 +1748,44 @@ an immediate subdirectory of a home directory:
 ~$ find .. -type -f -iname "*.sh" -mindepth 2 -maxdepth 2
 ~~~
 
-For other options to `find` see the `man`-page.
+The mere concatenation of filtering parameters is regarded as a logical "and"
+operation. To achive an "or" instead, we can use the `-or` argument. For
+instance, The above listsing of `*.sh` files complained aboud `.ssh`
+directories. We need to use `-or` to combine the above filter with the
+permission-pruning filter above.
+
+~~~
+~$ find .. -type f -iname "*.sh" -or ! -perm -+r -prune
+~~~
+
+Once we've found a list of files, there are things that we can do for each
+filepath.  For instance, we can execute a command with the `-exec` option. The
+command must end with an `\;`, and the variable `{}` refers to the filepath.
+For instance, to count the number of lines in each `*.sh` file:
+
+~~~
+~$ find .. -type f -iname "*.sh" -exec wc -l {} \;
+~~~
+
+It might be tempting to use the `-exec` option to `grep` through the given
+files. For instance, to see which `*.sh` files contain the word `cmp`.
+Although we _can_ do this, `grep` already supports recursive search through all
+files in a directory (without restrictions), with the `-r` option. Often, this
+an quick and easy way to find your way around a larger code-base.
+
+~~~
+~$ grep -Er "\bcmp\b" ..
+~~~
+
+For more options to `find` and `grep` see their `man`-pages.
 
 ### Exercises
 
+1. The `grep -Er` example above complains about inaccessible directories and
+files. Suppress this error output in the terminal.
+
+2. The example use of the `-exec` option similarly complains about inaccessible
+files. Suppress this error output in the terminal.
 
 # Environment Variables (e.g., `PATH`)
 
