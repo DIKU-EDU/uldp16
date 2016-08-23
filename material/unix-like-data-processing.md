@@ -1794,6 +1794,9 @@ matching lines, path the option `--with-filename` to `grep`.)
 4. List the unique usernames of all users that have used the `cmp` in one of
 their shell scripts.
 
+5. Find all the `*.sh` files that begin with a shebang. What different shebangs
+are there in use?
+
 # Environment Variables (e.g., `PATH`)
 
 # `gnuplot`
