@@ -1791,6 +1791,9 @@ files. Suppress this error output in the terminal.
 word `cmp`. (_Hint:_ If you want to print the filenames, and not just the
 matching lines, path the option `--with-filename` to `grep`.)
 
+4. List the unique usernames of all users that have used the `cmp` in one of
+their shell scripts.
+
 # Environment Variables (e.g., `PATH`)
 
 # `gnuplot`
