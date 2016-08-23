@@ -845,7 +845,7 @@ follow so-called "symbolic links".
 
 # More Data For Your Shell
 
-The world would be pretty borring if all you could do was write poems and mess
+The world would be pretty boring if all you could do was write poems and mess
 about with your files and directories. It is time to get on the Internet!
 
 ## `curl`
