@@ -25,7 +25,7 @@ location ~ "^/~([a-z]{3}[0-9]{3})(/.*?)?$" {
 
 # FreeBSD Configurations
 
-For now particular reason we chose FreeBSD in 2016.
+For no particular reason we chose FreeBSD in 2016.
 
 We make use of `bash` as the default login shell for all students. To use
 process substitution, i.e. `<()`, in FreeBSD, it is necessary to mount
