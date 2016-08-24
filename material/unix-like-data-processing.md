@@ -2,6 +2,13 @@
 % Oleksandr Shturmov <oleks@oleks.info>; Morten Brøns-Pedersen <f@ntast.dk>; Troels Henriksen <athas@sigkill.dk>
 % August 24, 2016
 
+# Preface
+
+The following notes were originally developed by Oleks and Morten in
+preparation for a 1-day course for high-school students in 2015. They were
+later expanded upon by Oleks and Troels in 2016 in preparation for a week-long
+course for (among others) 2nd-year students at DIKU.
+
 # Operating Systems
 
 An *operating system* stands between the programs you are running, e.g. Chrome,
