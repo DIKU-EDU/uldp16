@@ -1692,7 +1692,47 @@ program to test, followed by input-output file pairs. For instance,
 
 # Exercise Series: `tmpdir`
 
+Many programs need some sort of "scratch-space". In such contexts, it would be
+useful to have a `tmpdir` utility which creates a temporary directory, runs a
+given program to completion, and deletes the temporary directory.
+
 (Coming soon.)
+
+## `mktemp`
+
+The `mktemp` utility can be used to create a temporary file or directory. Since
+many such files or directories may exist under any given directory, `mktemp`
+takes a template intended for an application specific path, and filename prefix
+and suffix.
+
+For instance, to create a temporary file in the current working directory:
+
+~~~
+~$ mktemp testing-mktemp-XXXX
+testing-mktemp-Omrx
+$ file testing-mktemp-Omrx 
+testing-mktemp-Omrx: empty
+~~~
+
+To create a directory, pass in the `-d` option:
+
+~~~
+~$ mktemp -d testing-mktemp-XXXX
+testing-mktemp-7vPK
+dfz719@syrakuse[~]
+~$ file testing-mktemp-7vPK
+testing-mktemp-7vPK: directory
+~~~
+
+A typical place to put temporary files and directories under the `/tmp/`
+directory on a Unix-like system. This is the typical "mount-point" of a `tmpfs`
+filesystem, i.e. a filesystem dedicated to temporary storage. Such a filesystem
+is often in-memory only, and so temporary files and directories are never
+stored on disk, and are purged upon reboot.
+
+### Exercises
+
+1. Create a temporary directory under `/tmp/` using `mktemp`. Delete it.
 
 # `diff` and `patch`
 
