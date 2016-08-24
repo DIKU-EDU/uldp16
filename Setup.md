@@ -22,3 +22,16 @@ location ~ "^/~([a-z]{3}[0-9]{3})(/.*?)?$" {
   autoindex on;
 }
 ~~~
+
+# FreeBSD Configurations
+
+For now particular reason we chose FreeBSD in 2016.
+
+We make use of `bash` as the default login shell for all students. To use
+process substitution, i.e. `<()`, in FreeBSD, it is necessary to mount
+`fdescfs` under `/dev/fd`. We don't know if this has any negative effects on
+the rest of the system, so use at your own risk.
+
+~~~
+$ mount -t fdescfs fdesc /dev/fd
+~~~
