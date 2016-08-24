@@ -1858,7 +1858,7 @@ stored on disk, and are purged upon reboot.
 
 1. Create a temporary directory under `/tmp/` using `mktemp`. Delete it.
 
-# `diff` and `patch`
+# Comparing and Patching
 
 `cmp` doesn't give much insight into how files differ, when they do. The more
 colloquial tool for comparing files is `diff`. The output of `diff` is
@@ -1871,7 +1871,234 @@ Tools like `git` build on top of `diff` and `patch` to offer a (somewhat)
 cleaner interface, but sometimes, `diff` and `patch` are useful in their own
 right.
 
-(More coming soon.)
+## `diff`
+
+Consider our `poem.txt`:
+
+~~~
+Roses are red,
+Violets are blue,
+Sugar is sweet,
+And so are you.
+~~~
+
+Now consider a `better-poem.txt`:
+
+~~~
+Roses are red,
+Violets are blue,
+Onions stink,
+And so do you.
+~~~
+
+`diff` can tell us the difference between the two:
+
+~~~
+~$ diff poem.txt better-poem.txt 
+3,4c3,4
+< Sugar is sweet,
+< And so are you.
+---
+> Onions stink,
+> And so do you.
+~~~
+
+A more familiar, GitHub-style format (GitHub uses `diff` under the covers), can
+be achieved with the `-u` option to `diff`:
+
+~~~
+$ diff -u poem.txt better-poem.txt 
+--- poem.txt    2016-08-16 13:37:00.000000000 +0000
++++ better-poem.txt     2016-08-16 13:37:00.000000000 +0000
+@@ -1,4 +1,4 @@
+ Roses are red,
+ Violets are blue,
+-Sugar is sweet,
+-And so are you.
++Onions stink,
++And so do you.
+~~~
+
+### Exercises
+
+1. Rewrite `utest.sh` above to use `diff` instead of `cmp`.
+
+## Process Substitution 
+
+A subshell, written `$()`, executes the shell command inside the parentheses
+and yields the output of the executed command as a result. Process
+substitution, written `<()` executes the shell command inside the parentheses,
+writes the output of the command to a temporary file, and yields the filename
+as a result.  (Relate to the `tmpdir` exercise from before.)
+
+This is useful if you want to compare the output of two commands. For instance,
+consider our `utest.sh` from before. In particular, the following line:
+
+~~~
+"$program" < "$input" | cmp "$output" /dev/stdin
+~~~
+
+We could use process substitution to the same effect:
+
+~~~
+cmp <("$program" < "$input") "$output"
+~~~
+
+Process substitution is especially useful when you want to compare the output
+of two commands:
+
+~~~
+~$ diff <(wc -l access.log) <(cat access.log | wc -l)
+1c1
+<     1694 access.log
+---
+>     1694
+~~~
+
+Process-substitution is (typically) a `bash`-specific feature, although many
+other shells have it as well. Crucially, on the server set up for this course,
+`sh` is not the same as `bash`.
+
+In the context of `utest.sh` this means that we have to replace the top line
+
+~~~
+#!/usr/bin/env sh
+~~~
+
+with the line
+
+~~~
+#!/usr/bin/env sh
+~~~
+
+### Exercises
+
+1. Explain the difference between `echo <(ls)` and `echo $(ls)`.
+2. Explain the difference between `cat <(ls)` and `cat $(ls)`.
+3. Explain the following sequence of commands and their output:
+
+    ~~~
+    ~$ file <(ls)
+    /dev/fd/63: character special (0/66)
+    ~$ file /dev/fd/63
+    /dev/fd/63: cannot open `/dev/fd/63' (Bad file descriptor)
+    ~~~
+
+## `patch`
+
+A "diff" is sufficient to recover one file from the other. For instance, let's
+store the diff as `poem.patch`, remove `better-poem.txt` and try to recover it.
+
+~~~
+$ patch -p0 --backup poem.txt < poem.patch
+~~~
+
+This modifies the `poem.txt` to what earlier was `better-poem.txt`, but also
+copies the original `poem.txt` to `poem.txt.orig`:
+
+~~~
+~$ cat poem.txt
+Roses are red,
+Violets are blue,
+Onions stink,
+And so do you.
+~$ cat poem.txt.orig
+Roses are red,
+Violets are blue,
+Sugar is sweet,
+And so are you.
+~~~
+
+Fundamentally, `patch` performs its operations in-place, so `--backup` is often
+a good idea. The `-p` argument is mandatory, but really first comes to light in
+the context of `diff`ing and `patch`ing directories rather than files.
+
+One useful application of `diff` and `patch` is in connection with programming
+assignments. While there may be an original handout for a programming
+assignment, that handout might contain bugs which are fixed in a later version
+of the handout.
+
+Trouble arises if you had already done some work on the assignment before the
+new version arrives. In this case it would be useful to patch your current
+version with the changes made to the original version (provided that conflicts
+arise).
+
+For instance, consider the exercise to rewrite `utest.sh` to use `diff` from
+before. Furthermore, you should use process substitution.
+
+If we initially hand out `utest.sh` as described in these notes, it would look
+something like this:
+
+~~~
+#!/usr/bin/env sh
+
+prog=$1
+input=$2
+output=$3
+
+if ! ($prog < $input | cmp "$output" /dev/stdin); then
+    echo Failed
+fi
+~~~
+
+Put this `utest.sh` into a folder called `handout`.
+
+Now copy `handout` to a folder `solution` called solution, and as a first step,
+replace `cmp` with `diff`.
+
+At this point, we might figure that using `sh` as our shell will be confusing
+to students as they try to use process substitution. So instead, we would like
+to update the handout to contain a `utest.sh` like this:
+
+~~~
+#!/usr/bin/env sh
+
+prog=$1
+input=$2
+output=$3
+
+if ! ($prog < $input | cmp "$output" /dev/stdin); then
+    echo Failed
+fi
+~~~
+
+Put this into a folder `handout-v2`. Furthermore, let us throw in a `poem.txt`
+into our `handout-v2`.
+
+To run `diff` recursively, and to properly handle non-existing files:
+
+~~~
+~$ diff -ruN handout handout-v2
+diff -ruN handout/poem.txt handout-v2/poem.txt
+--- handout/poem.txt    1970-01-01 00:00:00.000000000 +0000
++++ handout-v2/poem.txt 2016-08-15 13:37:00.000000000 +0000
+@@ -0,0 +1,4 @@
++Roses are red,
++Violets are blue,
++Onions stink,
++And so do you.
+diff -ruN handout/utest.sh handout-v2/utest.sh
+--- handout/utest.sh    2016-08-15 13:37:00.000000000 +0000
++++ handout-v2/utest.sh 2016-08-15 13:37:00.000000000 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env sh
++#!/usr/bin/env bash
+ 
+ prog=$1                                                                         
+ input=$2
+~~~
+
+Now, let's try to apply this patch on top of our current solution:
+
+~~~
+~$ diff -ruN handout handout-v2 > handout.patch
+~$ cd solution
+~$ patch -p1 --backup < ../handout.patch
+~~~
+
+In this case, the argument `-p1` (rather than `-p0`) indicates that we should
+skip the first part of the paths in `handout.patch` which relates to the fact
+at we compared the `handout` and `handout-v2` directories.
 
 # `find` (and a little more `grep`)
 
