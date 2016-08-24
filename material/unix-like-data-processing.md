@@ -1502,8 +1502,7 @@ script was somewhere else, we could run it as:
 
 If you want to be able to run the script just by typing `myscript.sh`,
 you must add its containing directory to the `$PATH` environment
-variable.  This is outside the scope of this document, but you can try
-using a search engine to figure out how to do this yourself.
+variable. We will briefly cover this later.
 
 ### Exercises
 
@@ -1690,13 +1689,132 @@ program to test, followed by input-output file pairs. For instance,
     ~$ ./mtest.sh prog in.1 out.1 in.2 out.2
     ~~~
 
+## `PATH`
+
+Previously, you learned how we can use `which` and `file` to find the concrete
+executable behind a shell command. To make your shell scripts feel as native as
+other shell commands, you should add the directory containing those
+(executable) shell scripts to your `PATH` environment variable.
+
+One way to do this is to do this in your `~/.profile`. This file is loaded by
+most shells _upon login_. That is, after modifying this file, it is best you
+log out and log in again.
+
+For instance, to add your home directory to your `PATH`, add the following line
+at the end of your `~/.profile`:
+
+~~~
+export PATH="$HOME:$PATH"
+~~~
+
+The directories are separated by `:` in `PATH`, whole `$HOME` and `$PATH` are
+shell variables for your home directory and current `PATH` environment
+variable. The `export` qualifier makes sure to export this change to your
+environment variables which persist after `~/.profile` is read.
+
+Remember to log out and log in again to see the changes applied. Now you should
+be run shell scripts in your home directory from anywhere, and without
+prefixing them with `./`, or more treacherous paths.
+
 # Exercise Series: `tmpdir`
 
 Many programs need some sort of "scratch-space". In such contexts, it would be
 useful to have a `tmpdir` utility which creates a temporary directory, runs a
-given program to completion, and deletes the temporary directory.
+given program to completion, and deletes the temporary directory in the end.
 
-(Coming soon.)
+The section below describes the `mktemp` utility, a standard utility for
+creating temporary directories and files. See this first.
+
+Write a shell script, `tmpdir`, which when executed as follows:
+
+~~~
+~$ tmpdir a b c
+~~~
+
+Does the following:
+
+1. Create a temporary directory with the template `/tmp/mytempdir-XXXXXX`.
+2. `cd` into that directory.
+3. Execute `a b c`.
+4. `cd` back to the original working directory.
+5. Remove the temporary directory, without regard for its contents.
+
+_Hint:_ Use a subshell to get the current working directory.
+
+For instance, the following showcases how the temporary directory only persists
+for the duration of the `tmpdir` command:
+
+~~~
+~$ tmpdir pwd
+/tmp/mytempdir-oFyIZZ
+$ file /tmp/mytempdir-oFyIZZ
+...: cannot open `/tmp/mytempdir-oFyIZZ' (No such file or directory)
+~~~
+
+Next, try a variation, so that when executed as follows:
+
+~~~
+~$ tmpdir a b c
+~~~
+
+`tmpdir` does the following:
+
+1. Create a temporary directory with the template `/tmp/mytempdir-XXXXXX`.
+2. Execute `a b c TMPDIR`, where `TMPDIR` is the path to the above directory.
+3. Remove the temporary directory, without regard for its contents.
+
+For instance,
+
+~~~
+~$ tmpdir echo The tempdir is
+The tempdir is /tmp/mytempdir-zGPMAL
+~~~
+
+Next, try another variation, so that when executed as follows:
+
+~~~
+~$ tmpdir a b c
+~~~
+
+`tmpdir` does the following:
+
+1. Create a temporary directory with the template `/tmp/mytempdir-XXXXXX`.
+2. Execute `a TMPDIR b c`, where `TMPDIR` is the path to the above directory.
+3. Remove the temporary directory, without regard for its contents.
+
+For instance,
+
+~~~
+~$ tmpdir echo is the tempdir
+/tmp/mytempdir-vDwq3e is the tempdir
+~~~
+
+_Hint:_ Use `shift`.
+
+Last, but not least, try a variation combining all of the above. Let `tmpdir`
+take one optional parameter, indicating which of the 3 above variations it
+should perform. The options are as follows:
+
+* `-c` - `cd` into the temporary directory before executing the command.
+* `-#` - the path to the temporary directory is given as the last argument to
+  the executed command.
+* `-1` - the path to the temporary directory is given as the first argument to
+  the executed command.
+
+By default, if no argument is given, assume `-c`.
+
+For instance,
+
+~~~
+~$ tmpdir -c pwd
+/tmp/mytempdir-udBkJX
+~$ tmpdir -# echo The tempdir is
+The tempdir is /tmp/mytempdir-IjvJPf
+~$ tmpdir -1 echo is the tempdir
+/tmp/mytempdir-8VmA46 is the tempdir
+~$ tmpdir pwd
+/tmp/mytempdir-gcpAc8
+~~~
 
 ## `mktemp`
 
@@ -1719,7 +1837,6 @@ To create a directory, pass in the `-d` option:
 ~~~
 ~$ mktemp -d testing-mktemp-XXXX
 testing-mktemp-7vPK
-dfz719@syrakuse[~]
 ~$ file testing-mktemp-7vPK
 testing-mktemp-7vPK: directory
 ~~~
