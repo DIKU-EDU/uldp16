@@ -2201,14 +2201,7 @@ an immediate subdirectory of a home directory:
 ~~~
 
 The mere concatenation of filtering parameters is regarded as a logical "and"
-operation. To achive an "or" instead, we can use the `-or` argument. For
-instance, The above listsing of `*.sh` files complained aboud `.ssh`
-directories. We need to use `-or` to combine the above filter with the
-permission-pruning filter above.
-
-~~~
-~$ find .. -type f -iname "*.sh" -or ! -perm -+r -prune
-~~~
+operation. To achive an "or" instead, we can use the `-or` argument. 
 
 Once we've found a list of files, there are things that we can do for each
 filepath.  For instance, we can execute a command with the `-exec` option. The
